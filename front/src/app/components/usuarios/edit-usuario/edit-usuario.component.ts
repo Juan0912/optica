@@ -34,6 +34,7 @@ export class EditUsuarioComponent implements OnInit {
     this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
 
       if(resp.datos == null){
+        this._router.navigateByUrl('/usuarios/inicio');
         this._messageService.add({ severity: 'error', summary: 'Error', detail: resp.mensaje });
       } else {
         this.cliente = resp.datos;
