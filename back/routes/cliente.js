@@ -14,10 +14,11 @@ api.post('/registro', clienteController.registroCliente);
 api.post('/loginCliente', clienteController.loginCliente);
 // Ruta para el listado de clientes.
 api.get('/listarClientes', auth.auth, clienteController.listarClientes);
+// Ruta para obtener un cliente por su id.
 api.get('/obtenerCliente/:id', auth.auth, clienteController.obtenerCliente);
 // Ruta para la actualizacion de clientes.
 api.post('/actualizarCliente/:id', clienteController.actualizarCliente);
-// Ruta para la actualizacion de clientes.
+// Ruta para la eliminar un cliente por su id.
 api.delete('/eliminarCliente/:id', clienteController.eliminarCliente);
 
 
