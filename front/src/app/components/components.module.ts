@@ -5,22 +5,21 @@ import { ComponentsRoutingModule } from './component-routing.module';
 import { SharedsModule } from './shareds/shareds.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../interceptor/token.interceptor';
-import { IndexCitasComponent } from './citas/index-citas/index-citas.component';
+import { CitasModule } from './citas/citas.module';
+
 
 
 
 
 
 @NgModule({
-  declarations: [
-  
-    IndexCitasComponent
-  ],
+  declarations: [ ],
   imports: [
     CommonModule,
     UsuariosModule,
     ComponentsRoutingModule,
     SharedsModule,
+    CitasModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
