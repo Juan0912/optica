@@ -32,9 +32,14 @@ export class EditUsuarioComponent implements OnInit {
     });
 
     this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
-      this.cliente = resp.datos; 
-    });    
 
+      if(resp.datos == null){
+        this._messageService.add({ severity: 'error', summary: 'Error', detail: resp.mensaje });
+      } else {
+        this.cliente = resp.datos;
+      }
+
+    });
   }
 
   actualizarCliente(form: NgForm){
