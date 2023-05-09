@@ -5,9 +5,102 @@
     </div>
 </div>
 
-<div class="card">
-    
-</div>
+<!-- <div class="card">
+    <p-table #dt1 [value]="clientes" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+        [globalFilterFields]="['nombres', 'apellidos', 'tipoDocumento', 'identificacion','fNacimiento', 'estadoCuenta']">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Nombres
+                        <p-columnFilter type="text" field="nombres" display="menu"
+                            [showAddButton]="false"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Apellidos
+                        <p-columnFilter type="text" field="apellidos" display="menu"
+                            [showAddButton]="false"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Nro de Identificación
+                        <p-columnFilter type="text" field="identificacion" display="menu"
+                            [showAddButton]="false"></p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Fecha de Nacimiento
+                        <p-columnFilter type="date" field="fNacimiento" display="menu"
+                            [showAddButton]="false"></p-columnFilter>
+                    </div>
+                </th>
+
+                <th style="min-width:5rem">
+                    <div class="flex align-items-center">
+                        Estado
+                        <p-columnFilter field="estadoCuenta" matchMode="equals" display="menu" [showAddButton]="false"
+                            [showMatchModes]="false" [showOperator]="false">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+                                    placeholder="Cualquiera">
+                                    <ng-template let-option pTemplate="item">
+                                        <p-tag [value]="option.value" [severity]="getSeverity(option.label)"></p-tag>
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        <span>Opciones</span>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cliente>
+            <tr>
+                <td>
+                    {{ cliente.nombres }}
+                </td>
+                <td>
+                    {{ cliente.apellidos }}
+                </td>
+                <td>
+                    {{ cliente.identificacion }}
+                </td>
+                <td>
+                    {{ cliente.fNacimiento | date: 'dd/MM/yyyy' }}
+                </td>
+                <td>
+                    <p-tag [value]="cliente.estadoCuenta" [severity]="getSeverity(cliente.estadoCuenta)"></p-tag>
+                </td>                
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-rounded p-button-text" pTooltip="Agregar historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" (click)="abrirModalDetalle(cliente)" pTooltip="Detalle"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" [routerLink]="['/usuarios/editar', cliente._id]" pTooltip="Editar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarCliente(cliente)" pTooltip="Eliminar cliente"></button>
+                    </div>
+                </td>
+                
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se han encontrado usuarios</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div> -->
 
 
 
