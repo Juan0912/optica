@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { log } from 'console';
-import { PrimeNGConfig } from 'primeng/api';
+import { FilterMatchMode, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Customer, Representative } from 'src/app/demo/api/customer';
 import { CustomerService } from 'src/app/demo/service/customer.service';
@@ -16,6 +16,9 @@ import { ClienteService } from 'src/app/services/cliente.service';
   styleUrls: ['./index-usuarios.component.scss']
 })
 export class IndexUsuariosComponent implements OnInit {
+
+
+  matchModeOptions: SelectItem[] = [];
 
   constructor(
     private config: PrimeNGConfig,
@@ -34,9 +37,15 @@ export class IndexUsuariosComponent implements OnInit {
   clienteSelected: any = {};
 
 
+
+
   ngOnInit() {
     this.loadUsers();
-    this.loadConfig();
+    this.loadConfig()
+    this.matchModeOptions = [
+      { label: 'Igual', value: FilterMatchMode.EQUALS },
+      { label: 'Contiene', value: FilterMatchMode.CONTAINS }
+    ];
   }
 
   loadConfig() {
@@ -90,20 +99,20 @@ export class IndexUsuariosComponent implements OnInit {
     dt1.filterGlobal(event.target.value, 'contains')
   }
 
-  abrirModalDetalle(cliente: any){
+  abrirModalDetalle(cliente: any) {
     this.clienteSelected = cliente;
     console.log(this.clienteSelected);
     this.modalAbrirDetalle = true;
-    
+
   }
 
-  
-  abrirModalEliminarCliente(cliente: any){
+
+  abrirModalEliminarCliente(cliente: any) {
     this.clienteSelected = cliente;
     this.modalEliminarCliente = true;
   }
 
-  eliminarCliente(){
+  eliminarCliente() {
     this._clienteService.eliminarClienteAdmin(this.clienteSelected._id).subscribe(resp => {
       this.loadUsers();
       this.modalEliminarCliente = false;

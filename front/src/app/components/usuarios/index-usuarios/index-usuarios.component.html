@@ -1,7 +1,8 @@
 <div class="card d-flex justify-content-between" style="flex-direction: row !important;">
     <h3>Administración de Clientes</h3>
     <div>
-        <p-button label="Crear" routerLinkActive="router-link-active" routerLink="/usuarios/registro" styleClass="p-button-rounded p-button-success"></p-button>
+        <p-button label="Crear" routerLinkActive="router-link-active" routerLink="/usuarios/registro"
+            styleClass="p-button-rounded p-button-success"></p-button>
     </div>
 </div>
 
@@ -16,33 +17,33 @@
                 <th style="min-width:15rem">
                     <div class="flex align-items-center">
                         Nombres
-                        <p-columnFilter type="text" field="nombres" display="menu"
-                            [showAddButton]="false"></p-columnFilter>
+                        <p-columnFilter type="text" field="nombres" display="menu" [showAddButton]="false"
+                            [matchModeOptions]="matchModeOptions" [showOperator]="false"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:15rem">
                     <div class="flex align-items-center">
                         Apellidos
-                        <p-columnFilter type="text" field="apellidos" display="menu"
-                            [showAddButton]="false"></p-columnFilter>
+                        <p-columnFilter type="text" field="apellidos" display="menu" [showAddButton]="false"
+                            [matchModeOptions]="matchModeOptions" [showOperator]="false"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
                         Nro de Identificación
-                        <p-columnFilter type="text" field="identificacion" display="menu"
-                            [showAddButton]="false"></p-columnFilter>
+                        <p-columnFilter type="text" field="identificacion" display="menu" [showAddButton]="false"
+                            [matchModeOptions]="matchModeOptions" [showOperator]="false"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
                         Fecha de Nacimiento
-                        <p-columnFilter type="date" field="fNacimiento" display="menu"
-                            [showAddButton]="false"></p-columnFilter>
+                        <p-columnFilter type="date" field="fNacimiento" display="menu" [showAddButton]="false"
+                            [showOperator]="false"></p-columnFilter>
                     </div>
                 </th>
 
-                <th style="min-width:10rem">
+                <th style="min-width:4rem">
                     <div class="flex align-items-center">
                         Estado
                         <p-columnFilter field="estadoCuenta" matchMode="equals" display="menu" [showAddButton]="false"
@@ -81,16 +82,20 @@
                 </td>
                 <td>
                     <p-tag [value]="cliente.estadoCuenta" [severity]="getSeverity(cliente.estadoCuenta)"></p-tag>
-                </td>                
+                </td>
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
-                        <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-rounded p-button-text" pTooltip="Agregar historia clínica"></button>
-                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" (click)="abrirModalDetalle(cliente)" pTooltip="Detalle"></button>
-                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" [routerLink]="['/usuarios/editar', cliente._id]" pTooltip="Editar cliente"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarCliente(cliente)" pTooltip="Eliminar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-plus-circle"
+                            class="p-button-rounded p-button-text" pTooltip="Agregar historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"
+                            (click)="abrirModalDetalle(cliente)" pTooltip="Detalle"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text"
+                            [routerLink]="['/usuarios/editar', cliente._id]" pTooltip="Editar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
+                            (click)="abrirModalEliminarCliente(cliente)" pTooltip="Eliminar cliente"></button>
                     </div>
                 </td>
-                
+
 
             </tr>
         </ng-template>
@@ -104,68 +109,80 @@
 
 
 <!-- Modal detalle del cliente -->
-<p-dialog header="Información personal" [(visible)]="modalAbrirDetalle" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-        <div class="row">
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Nombres</label>
-                <input class="form-control" type="text" name="nombres" disabled [(ngModel)]="clienteSelected.nombres" placeholder="Nombre completo" required>
-            </div>
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Apellidos</label>
-                <input class="form-control" type="text" name="apellidos" disabled [(ngModel)]="clienteSelected.apellidos" placeholder="Apellido completo" required>
-            </div>
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Correo electrónico</label>
-                <input class="form-control" type="text" name="correo" disabled [(ngModel)]="clienteSelected.correo" placeholder="Correo electrónico" required>
-            </div>
-
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Teléfono</label>
-                <input class="form-control" type="number" name="telefono" disabled [(ngModel)]="clienteSelected.telefono" placeholder="Teléfono" required>
-            </div>
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Fecha de nacimiento</label>
-                <input class="form-control" name="fNacimiento" disabled [(ngModel)]="clienteSelected.fNacimiento" type="date" required>
-            </div>
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Tipo de documento</label>
-                <select class="form-control custom-select" name="tipoDocumento" disabled [(ngModel)]="clienteSelected.tipoDocumento" required>
-                    <option disabled selected value="">Selecciona el tipo de documento</option>
-                    <option value="Cédula">Cédula de ciudadanía</option>
-                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                    <option value="C. Extranjería">Cédula de extranjería</option>
-                </select>
-            </div>
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Número de documento </label>
-                <input class="form-control" type="number" name="identificacion" disabled [(ngModel)]="clienteSelected.identificacion" required
-                    placeholder="Número de documento" required>
-            </div>
-
-            <div class="col-md-4 form-group">
-                <label for="validationCustom01" class="form-label">Género</label>
-                <select class="form-control custom-select" name="genero" disabled [(ngModel)]="clienteSelected.genero" required>
-                    <option disabled selected value="">Selecciona el género</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                </select>
-            </div>
+<p-dialog header="Información personal" [(visible)]="modalAbrirDetalle" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Nombres</label>
+            <input class="form-control" type="text" name="nombres" disabled [(ngModel)]="clienteSelected.nombres"
+                placeholder="Nombre completo" required>
         </div>
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Apellidos</label>
+            <input class="form-control" type="text" name="apellidos" disabled [(ngModel)]="clienteSelected.apellidos"
+                placeholder="Apellido completo" required>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Correo electrónico</label>
+            <input class="form-control" type="text" name="correo" disabled [(ngModel)]="clienteSelected.correo"
+                placeholder="Correo electrónico" required>
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Teléfono</label>
+            <input class="form-control" type="number" name="telefono" disabled [(ngModel)]="clienteSelected.telefono"
+                placeholder="Teléfono" required>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Fecha de nacimiento</label>
+            <input class="form-control" name="fNacimiento" disabled [(ngModel)]="clienteSelected.fNacimiento"
+                type="date" required>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Tipo de documento</label>
+            <select class="form-control custom-select" name="tipoDocumento" disabled
+                [(ngModel)]="clienteSelected.tipoDocumento" required>
+                <option disabled selected value="">Selecciona el tipo de documento</option>
+                <option value="Cédula">Cédula de ciudadanía</option>
+                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                <option value="C. Extranjería">Cédula de extranjería</option>
+            </select>
+        </div>
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Número de documento </label>
+            <input class="form-control" type="number" name="identificacion" disabled
+                [(ngModel)]="clienteSelected.identificacion" required placeholder="Número de documento" required>
+        </div>
+
+        <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Género</label>
+            <select class="form-control custom-select" name="genero" disabled [(ngModel)]="clienteSelected.genero"
+                required>
+                <option disabled selected value="">Selecciona el género</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+            </select>
+        </div>
+    </div>
 </p-dialog>
 
 
 
 <!-- Modal eliminar cliente -->
-<p-dialog header="Confirmar" [(visible)]="modalEliminarCliente" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+<p-dialog header="Confirmar" [(visible)]="modalEliminarCliente" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
     <div class="row flex justify-content-center">
 
-        <p>Realmente deseas eliminar a  <strong>{{clienteSelected.nombres}} {{clienteSelected.apellidos}}</strong>? Este proceso no se puede deshacer. </p>
+        <p>Realmente deseas eliminar a <strong>{{clienteSelected.nombres}} {{clienteSelected.apellidos}}</strong>? Este
+            proceso no se puede deshacer. </p>
 
     </div>
 
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="eliminarCliente()" label="Sí, eliminar" styleClass="p-button-text"></p-button>
-        <p-button icon="pi pi-times" (click)="modalEliminarCliente = false" label="Cancelar" styleClass="p-button-danger p-button-text"></p-button>
+        <p-button icon="pi pi-check" (click)="eliminarCliente()" label="Sí, eliminar"
+            styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="modalEliminarCliente = false" label="Cancelar"
+            styleClass="p-button-danger p-button-text"></p-button>
     </ng-template>
 
 </p-dialog>
