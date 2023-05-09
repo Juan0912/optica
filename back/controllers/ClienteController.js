@@ -18,7 +18,7 @@ const registroCliente = async (req, res) => {
     listadoClientes = await cliente.find({ identificacion: data.identificacion });
 
     if (listadoClientes.length === 0) {
-        
+
         // Se registra el cliente
         const reg = await cliente.create(data);
         res.status(200).send({
@@ -28,6 +28,35 @@ const registroCliente = async (req, res) => {
         });
 
     } else res.status(200).send({ datos: null, resultadoExitoso: false, mensaje: 'El usuario ya existe en la base de datos.' })
+}
+
+const actualizarCliente = async (req, res) => {
+
+    // Se procesa la data.
+    const data = req.body;
+    const idCliente = req.params.id;
+
+    // Se valida existencia del usuario.
+    let elementoActualizado = await cliente.findOneAndUpdate({ _id: idCliente }, {
+        nombres: data.nombres,
+        apellidos: data.apellidos,
+        telefono: data.telefono,
+        genero: data.genero,
+        fNacimiento: data.fNacimiento,
+        identificacion: data.identificacion,
+        tipoDocumento: data.tipoDocumento,
+        estadoCuenta: data.estadoCuenta,
+        valorCuenta: data.valorCuenta,
+        historiaClinica: data.historiaClinica,
+        correo: data.correo
+    });
+
+    res.status(200).send({
+        datos: elementoActualizado,
+        resultadoExitoso: true,
+        mensaje: 'Operación existosa!'
+    });
+
 }
 
 const loginCliente = async (req, res) => {
@@ -66,7 +95,7 @@ const listarClientes = async (req, res) => {
             // Se declaran variables
             let listadoClientes = [];
             // Se valida existencia del usuario.
-            listadoClientes = await cliente.find().sort({createdAt:-1});
+            listadoClientes = await cliente.find().sort({ createdAt: -1 });
 
             res.status(200).send({
                 datos: listadoClientes,
@@ -79,6 +108,22 @@ const listarClientes = async (req, res) => {
 
 }
 
+const eliminarCliente = async (req, res) => {
+
+    const idCliente = req.params.id;
+
+
+    const clienteEliminado = await cliente.findByIdAndRemove({ _id: idCliente });
+
+    res.status(200).send({
+        datos: clienteEliminado,
+        resultadoExitoso: true,
+        mensaje: 'Operación existosa!'
+    });
+
+}
+
+
 
 
 
@@ -87,6 +132,8 @@ const listarClientes = async (req, res) => {
 module.exports = {
     registroCliente,
     loginCliente,
-    listarClientes
+    listarClientes,
+    actualizarCliente,
+    eliminarCliente
 
 }

@@ -27,7 +27,7 @@ const app = express();
 // ========================================================= SOCKET =========================================
 
 // Se establece conexión a base de datos mongo.
-mongoose.connect(url_bd, { useUnifiedTopology: true, useNewUrlParser: true }, (err, res) => {
+mongoose.connect('mongodb://mongo:KHmWhsOzySUXNUgHUOCQ@containers-us-west-8.railway.app:7801/optica?authSource=admin', { useUnifiedTopology: true, useNewUrlParser: true }, (err, res) => {
     if (err) console.log(err);
     else {
         app.listen(port, () => {
