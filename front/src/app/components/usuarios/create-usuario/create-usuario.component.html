@@ -32,10 +32,10 @@
                     <input class="form-control" type="number" name="telefono" [(ngModel)]="cliente.telefono" placeholder="Teléfono" required>
                 </div>
                 <div class="col-md-4 form-group">
-                    <label for="validationCustom01" class="form-label">Fecha nacimiento</label>
+                    <label for="validationCustom01" class="form-label">Fecha de nacimiento</label>
                     <input class="form-control" name="fNacimiento" [(ngModel)]="cliente.fNacimiento" type="date" required>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 form-group">
                     <label for="validationCustom01" class="form-label">Tipo de documento</label>
                     <select class="form-control custom-select" name="tipoDocumento" [(ngModel)]="cliente.tipoDocumento" required>
                         <option disabled selected value="">Selecciona el tipo de documento</option>
@@ -50,7 +50,7 @@
                         placeholder="Número de documento" required>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 form-group">
                     <label for="validationCustom01" class="form-label">Género</label>
                     <select class="form-control custom-select" name="genero" [(ngModel)]="cliente.genero" required>
                         <option disabled selected value="">Selecciona el género</option>
@@ -62,7 +62,7 @@
         </div>
         <div class="card-footer text-center">
             <button  type="submit" class="btn btn-primary mr-3">Crear cliente</button>
-            <button type="button" class="btn btn-warning mr-3" (click)="irAtras()">Regresar</button>            
+            <button type="button" class="btn btn-warning mr-3" routerLink="/usuarios/inicio">Regresar</button>            
         </div>
     </div>
 </form>

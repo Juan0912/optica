@@ -1,1 +1,68 @@
-<p>edit-usuario works!</p>
+<!-- Page title-->
+<div class="border-bottom mb-5">
+    <h1 class="mt-2 mt-md-4 mb-3">Cliente</h1>
+    <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+        <p class="text-muted">Este módulo permite editar información personal del cliente en la óptica.</p>
+
+    </div>
+</div>
+
+<form #form="ngForm">
+    <div class="card box-shadow-sm">
+        <div class="card-header">
+            <h5 style="margin-bottom: 0px;">Editar cliente</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Nombres</label>
+                    <input class="form-control" type="text" name="nombres" [(ngModel)]="cliente.nombres" placeholder="Nombre completo" required>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Apellidos</label>
+                    <input class="form-control" type="text" name="apellidos" [(ngModel)]="cliente.apellidos" placeholder="Apellido completo" required>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Correo electrónico</label>
+                    <input class="form-control" type="text" name="correo" [(ngModel)]="cliente.correo" placeholder="Correo electrónico" required>
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Teléfono</label>
+                    <input class="form-control" type="number" name="telefono" [(ngModel)]="cliente.telefono" placeholder="Teléfono" required>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Fecha de nacimiento</label>
+                    <input class="form-control" name="fNacimiento" [(ngModel)]="cliente.fNacimiento" type="date" required>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Tipo de documento</label>
+                    <select class="form-control custom-select" name="tipoDocumento" [(ngModel)]="cliente.tipoDocumento" required>
+                        <option disabled selected value="">Selecciona el tipo de documento</option>
+                        <option value="Cédula">Cédula de ciudadanía</option>
+                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                        <option value="C. Extranjería">Cédula de extranjería</option>
+                    </select>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Número de documento </label>
+                    <input class="form-control" type="number" name="identificacion" [(ngModel)]="cliente.identificacion" required
+                        placeholder="Número de documento" required>
+                </div>
+
+                <div class="col-md-4 form-group">
+                    <label for="validationCustom01" class="form-label">Género</label>
+                    <select class="form-control custom-select" name="genero" [(ngModel)]="cliente.genero" required>
+                        <option disabled selected value="">Selecciona el género</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button  type="submit" class="btn btn-primary mr-3">Actualizar cliente</button>
+            <button type="button" class="btn btn-warning mr-3" routerLink="/usuarios/inicio">Regresar</button>            
+        </div>
+    </div>
+</form>

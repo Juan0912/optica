@@ -12,6 +12,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
+import { MenuModule } from 'primeng/menu';
+import { DialogModule } from 'primeng/dialog';
 
 import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
@@ -34,7 +36,10 @@ import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
     DropdownModule,
     MultiSelectModule,
     ButtonModule,
-    TooltipModule
+    TooltipModule,
+    MenuModule,
+    DialogModule
+    
   ],
   exports: [IndexUsuariosComponent]
 })

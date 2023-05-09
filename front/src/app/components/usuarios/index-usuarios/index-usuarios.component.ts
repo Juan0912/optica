@@ -34,6 +34,10 @@ export class IndexUsuariosComponent implements OnInit {
 
   activityValues: number[] = [0, 100];
 
+  visible: boolean = false;
+
+  clienteSelected: any = {};
+
   ngOnInit() {
     this.loadUsers();
     this.loadConfig();
@@ -91,12 +95,12 @@ export class IndexUsuariosComponent implements OnInit {
     dt1.filterGlobal(event.target.value, 'contains')
   }
 
-  hola(test: any) {
-    console.log(test)
+  abrirModalDetalle(cliente: any){
+    this.clienteSelected = cliente;
+    console.log(this.clienteSelected);
+    this.visible = true;
+    
   }
 
-  crearCliente(){
-    this._router.navigateByUrl('usuarios/registro');
-  }
 
 }
