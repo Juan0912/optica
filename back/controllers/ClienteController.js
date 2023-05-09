@@ -34,16 +34,17 @@ const obtenerCliente = async (req, res) => {
 
     const idCliente = req.params.id;
 
-    // Se valida existencia del usuario.
-    let clienteEncontrado = await cliente.findById({ _id: idCliente });
+    try {
+        let clienteEncontrado = await cliente.findById({ _id: idCliente });
 
-    if (clienteEncontrado) {
         res.status(200).send({
             datos: clienteEncontrado,
             resultadoExitoso: true,
             mensaje: 'Operación existosa!'
         });
-    } else res.status(200).send({ datos: null, resultadoExitoso: false, mensaje: 'El cliente no existe.' })
+    } catch {
+        res.status(200).send({ datos: null, resultadoExitoso: false, mensaje: 'El cliente no existe.' })
+    }
 }
 
 const actualizarCliente = async (req, res) => {
