@@ -14,6 +14,7 @@ api.post('/registro', clienteController.registroCliente);
 api.post('/loginCliente', clienteController.loginCliente);
 // Ruta para el listado de clientes.
 api.get('/listarClientes', auth.auth, clienteController.listarClientes);
+api.get('/obtenerCliente/:id', auth.auth, clienteController.obtenerCliente);
 // Ruta para la actualizacion de clientes.
 api.post('/actualizarCliente/:id', clienteController.actualizarCliente);
 // Ruta para la actualizacion de clientes.
