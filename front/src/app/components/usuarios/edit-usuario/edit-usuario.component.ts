@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { log } from 'console';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { ClienteService } from 'src/app/services/cliente.service';
+
 
 @Component({
   selector: 'app-edit-usuario',
@@ -12,7 +15,10 @@ export class EditUsuarioComponent implements OnInit {
   public cliente: any = {};
   public id: any;
 
-  constructor(private _route: ActivatedRoute) {
+  constructor(private _route: ActivatedRoute,
+              private _clienteService: ClienteService,
+              private _messageService: MessageService,
+              private _router: Router ) {
 
   }
 
@@ -24,7 +30,21 @@ export class EditUsuarioComponent implements OnInit {
     this._route.params.subscribe(params => {
       this.id = params['id'];      
     });
-    console.log(this.id);    
+
+    this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
+      this.cliente = resp.datos; 
+    });    
+
+  }
+
+  actualizarCliente(form: NgForm){
+    if(form.valid){
+      this._clienteService.actualizarClienteAdmin(this.cliente).subscribe(resp => {
+        this._router.navigateByUrl('/usuarios/inicio');
+        this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente actualizado con exito!' });
+        
+      })
+    }
   }
 
 }

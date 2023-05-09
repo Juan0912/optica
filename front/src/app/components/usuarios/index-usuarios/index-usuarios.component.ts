@@ -7,6 +7,7 @@ import { CustomerService } from 'src/app/demo/service/customer.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 
 @Component({
@@ -17,26 +18,21 @@ import { Router } from '@angular/router';
 export class IndexUsuariosComponent implements OnInit {
 
   constructor(
-    private alertService: AlertService,
-    private customerService: CustomerService,
     private config: PrimeNGConfig,
     private _requestsService: RequestsService,
-    private _router: Router
+    private _router: Router,
+    private _clienteService: ClienteService
   ) { }
 
   clientes: any[] = [];
-
   representatives!: Representative[];
-
   statuses!: any[];
-
   loading: boolean = false;
-
   activityValues: number[] = [0, 100];
-
-  visible: boolean = false;
-
+  modalAbrirDetalle: boolean = false;
+  modalEliminarCliente: boolean = false;
   clienteSelected: any = {};
+
 
   ngOnInit() {
     this.loadUsers();
@@ -71,7 +67,6 @@ export class IndexUsuariosComponent implements OnInit {
   loadUsers() {
     this._requestsService.get('listarClientes').subscribe((res: any) => {
       if (res.resultadoExitoso) {
-        console.log(res);
         this.clientes = res.datos;
       }
     })
@@ -98,8 +93,22 @@ export class IndexUsuariosComponent implements OnInit {
   abrirModalDetalle(cliente: any){
     this.clienteSelected = cliente;
     console.log(this.clienteSelected);
-    this.visible = true;
+    this.modalAbrirDetalle = true;
     
+  }
+
+  
+  abrirModalEliminarCliente(cliente: any){
+    this.clienteSelected = cliente;
+    this.modalEliminarCliente = true;
+  }
+
+  eliminarCliente(){
+    this._clienteService.eliminarClienteAdmin(this.clienteSelected._id).subscribe(resp => {
+      this.loadUsers();
+      this.modalEliminarCliente = false;
+
+    });
   }
 
 

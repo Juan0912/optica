@@ -1,5 +1,5 @@
 <div class="card d-flex justify-content-between" style="flex-direction: row !important;">
-    <h3>Administración de Cientes</h3>
+    <h3>Administración de Clientes</h3>
     <div>
         <p-button label="Crear" routerLinkActive="router-link-active" routerLink="/usuarios/registro" styleClass="p-button-rounded p-button-success"></p-button>
     </div>
@@ -87,7 +87,7 @@
                         <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-rounded p-button-text" pTooltip="Agregar historia clínica"></button>
                         <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" (click)="abrirModalDetalle(cliente)" pTooltip="Detalle"></button>
                         <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" [routerLink]="['/usuarios/editar', cliente._id]" pTooltip="Editar cliente"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" pTooltip="Eliminar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarCliente(cliente)" pTooltip="Eliminar cliente"></button>
                     </div>
                 </td>
                 
@@ -102,7 +102,9 @@
     </p-table>
 </div>
 
-<p-dialog header="Información personal" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+
+<!-- Modal detalle del cliente -->
+<p-dialog header="Información personal" [(visible)]="modalAbrirDetalle" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
         <div class="row">
             <div class="col-md-4 form-group">
                 <label for="validationCustom01" class="form-label">Nombres</label>
@@ -149,4 +151,21 @@
                 </select>
             </div>
         </div>
+</p-dialog>
+
+
+
+<!-- Modal eliminar cliente -->
+<p-dialog header="Confirmar" [(visible)]="modalEliminarCliente" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <div class="row flex justify-content-center">
+
+        <p>Realmente deseas eliminar a  <strong>{{clienteSelected.nombres}} {{clienteSelected.apellidos}}</strong>? Este proceso no se puede deshacer. </p>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="eliminarCliente()" label="Sí, eliminar" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="modalEliminarCliente = false" label="Cancelar" styleClass="p-button-danger p-button-text"></p-button>
+    </ng-template>
+
 </p-dialog>

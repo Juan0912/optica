@@ -27,17 +27,17 @@ export class ClienteService {
 
   actualizarClienteAdmin(cliente: any): Observable<any> {
     // Request.
-    return this._http.put(`${this.url}actualizarClienteAdmin/${cliente._id}`, cliente);
+    return this._http.put(`${this.url}actualizarCliente/${cliente._id}`, cliente);
   }
 
   obtenerClienteAdmin(id: string): Observable<any> {
     // Request.
-    return this._http.get(`${this.url}obtenerClienteAdmin/${id}`);
+    return this._http.get(`${this.url}obtenerCliente/${id}`);
   }
 
   eliminarClienteAdmin(id: string): Observable<any> {
     // Request.
-    return this._http.delete(`${this.url}eliminarClienteAdmin/${id}`);
+    return this._http.delete(`${this.url}eliminarCliente/${id}`);
   }
 
   buscarClientePorIdentificacion(identificacion: any): Observable<any> {
