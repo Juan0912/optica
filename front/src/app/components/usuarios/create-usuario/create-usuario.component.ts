@@ -47,6 +47,10 @@ export class CreateUsuarioComponent implements OnInit {
     }   
   }
 
+  irAtras(){
+    this._router.navigateByUrl('/usuarios/inicio')
+  }
+
   
 
 }

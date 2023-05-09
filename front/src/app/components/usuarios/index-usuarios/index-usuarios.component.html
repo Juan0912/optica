@@ -27,13 +27,6 @@
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
-                        Tipo Documento
-                        <p-columnFilter type="text" field="tipoDocumento" display="menu"
-                            [showAddButton]="false"></p-columnFilter>
-                    </div>
-                </th>
-                <th style="min-width:10rem">
-                    <div class="flex align-items-center">
                         Nro de Identificación
                         <p-columnFilter type="text" field="identificacion" display="menu"
                             [showAddButton]="false"></p-columnFilter>
@@ -46,14 +39,6 @@
                             [showAddButton]="false"></p-columnFilter>
                     </div>
                 </th>
-                <th style="min-width:10rem">
-                    <div class="flex align-items-center">
-                        Género
-                        <p-columnFilter type="text" field="genero" display="menu"
-                            [showAddButton]="false"></p-columnFilter>
-                    </div>
-                </th>
-
 
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
@@ -71,6 +56,11 @@
                         </p-columnFilter>
                     </div>
                 </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Opciones
+                    </div>
+                </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-cliente>
@@ -82,20 +72,23 @@
                     {{ cliente.apellidos }}
                 </td>
                 <td>
-                    {{ cliente.tipoDocumento }}
-                </td>
-                <td>
                     {{ cliente.identificacion }}
                 </td>
                 <td>
                     {{ cliente.fNacimiento | date: 'dd/MM/yyyy' }}
                 </td>
                 <td>
-                    {{ cliente.genero }}
-                </td>
-                <td>
                     <p-tag [value]="cliente.estadoCuenta" [severity]="getSeverity(cliente.estadoCuenta)"></p-tag>
+                </td>                
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button pButton pRipple type="button" icon="pi pi-plus-circle" class="p-button-rounded p-button-text" pTooltip="Agregar historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" pTooltip="Detalle"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" pTooltip="Editar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" pTooltip="Eliminar cliente"></button>
+                    </div>
                 </td>
+                
 
             </tr>
         </ng-template>
@@ -106,3 +99,7 @@
         </ng-template>
     </p-table>
 </div>
+
+
+
+<input type="text" pInputText pTooltip="Enter your username" placeholder="hover to display tooltip">

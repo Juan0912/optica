@@ -11,12 +11,16 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
+
 import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
+import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
 
 @NgModule({
   declarations: [
     IndexUsuariosComponent,
-    CreateUsuarioComponent
+    CreateUsuarioComponent,
+    EditUsuarioComponent
   ],
   imports: [
     FormsModule,
@@ -29,7 +33,8 @@ import { CreateUsuarioComponent } from './create-usuario/create-usuario.componen
     SliderModule,
     DropdownModule,
     MultiSelectModule,
-    ButtonModule
+    ButtonModule,
+    TooltipModule
   ],
   exports: [IndexUsuariosComponent]
 })

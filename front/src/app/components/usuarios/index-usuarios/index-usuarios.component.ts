@@ -8,6 +8,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-index-usuarios',
   templateUrl: './index-usuarios.component.html',
@@ -95,7 +96,6 @@ export class IndexUsuariosComponent implements OnInit {
   }
 
   crearCliente(){
-    console.log('Hola mundo');
     this._router.navigateByUrl('usuarios/registro');
   }
 
