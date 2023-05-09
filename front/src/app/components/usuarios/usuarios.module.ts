@@ -15,6 +15,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { MenuModule } from 'primeng/menu';
 import { DialogModule } from 'primeng/dialog';
 import { PanelModule } from 'primeng/panel';
+import { MenubarModule } from 'primeng/menubar';
 
 import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
@@ -40,7 +41,8 @@ import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
     TooltipModule,
     MenuModule,
     DialogModule,
-    PanelModule    
+    PanelModule,
+    MenubarModule
   ],
   exports: [IndexUsuariosComponent]
 })

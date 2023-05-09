@@ -5,6 +5,7 @@ import { ComponentsRoutingModule } from './component-routing.module';
 import { SharedsModule } from './shareds/shareds.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../interceptor/token.interceptor';
+import { IndexCitasComponent } from './citas/index-citas/index-citas.component';
 
 
 
@@ -12,6 +13,8 @@ import { TokenInterceptor } from '../interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
+  
+    IndexCitasComponent
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
-import { PrimeNGConfig } from 'primeng/api';
+import { MenuItem, PrimeNGConfig } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { Customer, Representative } from 'src/app/demo/api/customer';
-import { CustomerService } from 'src/app/demo/service/customer.service';
-import { AlertService } from 'src/app/services/alert.service';
+import { Representative } from 'src/app/demo/api/customer';
 import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -17,13 +14,6 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class IndexUsuariosComponent implements OnInit {
 
-  constructor(
-    private config: PrimeNGConfig,
-    private _requestsService: RequestsService,
-    private _router: Router,
-    private _clienteService: ClienteService
-  ) { }
-
   clientes: any[] = [];
   representatives!: Representative[];
   statuses!: any[];
@@ -32,6 +22,14 @@ export class IndexUsuariosComponent implements OnInit {
   modalAbrirDetalle: boolean = false;
   modalEliminarCliente: boolean = false;
   clienteSelected: any = {};
+
+
+  constructor(
+    private config: PrimeNGConfig,
+    private _requestsService: RequestsService,
+    private _router: Router,
+    private _clienteService: ClienteService
+  ) {  }
 
 
   ngOnInit() {
@@ -110,6 +108,5 @@ export class IndexUsuariosComponent implements OnInit {
 
     });
   }
-
 
 }
