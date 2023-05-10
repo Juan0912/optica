@@ -18,6 +18,7 @@ const url_bd = process.env.BD_URL || 'mongodb://127.0.0.1:27017/optica';
 // ============================================================== RUTAS ===================================================
 const adminRoutes = require('./routes/admin');
 const clienteRoutes = require('./routes/cliente');
+const citaRoutes = require('./routes/cita');
 
 
 
@@ -55,6 +56,8 @@ app.use((req, res, next) => {
 // Configuración de rutas.
 app.use('/api', adminRoutes);
 app.use('/api', clienteRoutes);
+app.use('/api', citaRoutes);
+
 
 
 
