@@ -47,6 +47,35 @@ const obtenerCliente = async (req, res) => {
     }
 }
 
+const obtenerClientesALlamar = async (req, res) => {
+
+
+    try {
+        let clienteEncontrado = await cliente.find();
+        let clientesALlamar = [];
+
+        clienteEncontrado.map((cliente) => {
+            if (cliente.historiaClinica.length > 0) {
+                const fecha1 = new Date(historiaClinica[0].createdAt);
+                const fecha2 = new Date();
+                const unDiaEnMilisegundos = 86400000; // 1000 ms x 60 s x 60 m x 24 h
+
+                const diferenciaEnMilisegundos = Math.abs(fecha2 - fecha1);
+                const diferenciaEnDias = Math.floor(diferenciaEnMilisegundos / unDiaEnMilisegundos);
+                if (diferenciaEnDias == 350) clientesALlamar.push(cliente);
+            }
+        })
+
+        res.status(200).send({
+            datos: clientesALlamar,
+            resultadoExitoso: true,
+            mensaje: 'Operación existosa!'
+        });
+    } catch {
+        res.status(200).send({ datos: null, resultadoExitoso: false, mensaje: 'Problema al buscar clientes.' })
+    }
+}
+
 const actualizarCliente = async (req, res) => {
 
     // Se procesa la data.
@@ -152,6 +181,7 @@ module.exports = {
     listarClientes,
     actualizarCliente,
     eliminarCliente,
-    obtenerCliente
+    obtenerCliente,
+    obtenerClientesALlamar
 
 }

@@ -20,6 +20,8 @@ api.get('/obtenerCliente/:id', auth.auth, clienteController.obtenerCliente);
 api.put('/actualizarCliente/:id', clienteController.actualizarCliente);
 // Ruta para la eliminar un cliente por su id.
 api.delete('/eliminarCliente/:id', clienteController.eliminarCliente);
+// Ruta para obtener todas los usuarios a llamar.
+api.get('/obtenerClientesALlamar', auth.auth, clienteController.obtenerClientesALlamar);
 
 
 
