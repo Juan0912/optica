@@ -1,0 +1,77 @@
+<div class="border-bottom mb-5">
+    <h1 class="mt-2 mt-md-4 mb-3">Agenda Llamadas</h1>
+    <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+        <p class="text-muted">Este módulo permite visualizar los clientes que se realizaron el examen visual hace 350 días.</p>
+
+    </div>
+</div>
+
+<div class="card">
+    <p-table #dt1 [value]="clientes" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Nombres
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Apellidos
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Nro de Identificación
+                        </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Fecha de Nacimiento
+                        </div>
+                </th>
+
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        <span>Opciones</span>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cliente>
+            <tr>
+                <td>
+                    {{ cliente.nombres }}
+                </td>
+                <td>
+                    {{ cliente.apellidos }}
+                </td>
+                <td>
+                    {{ cliente.identificacion }}
+                </td>
+                <td>
+                    {{ cliente.fNacimiento | date: 'dd/MM/yyyy' }}
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button pButton pRipple type="button" icon="pi pi-book" class="p-button-rounded p-button-text"  pTooltip="Historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"  pTooltip="Detalle"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text"  pTooltip="Editar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"  pTooltip="Eliminar cliente"></button>
+                    </div>
+                </td>
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se han encontrado usuarios</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+

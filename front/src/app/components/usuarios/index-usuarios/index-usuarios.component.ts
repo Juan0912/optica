@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterMatchMode, PrimeNGConfig, SelectItem } from 'primeng/api';
+import { FilterMatchMode, MessageService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Representative } from 'src/app/demo/api/customer';
 import { RequestsService } from 'src/app/services/requests.service';
@@ -21,7 +21,8 @@ export class IndexUsuariosComponent implements OnInit {
     private config: PrimeNGConfig,
     private _requestsService: RequestsService,
     private _router: Router,
-    private _clienteService: ClienteService
+    private _clienteService: ClienteService,
+    private _messageService: MessageService
   ) { }
 
   clientes: any[] = [];
@@ -110,9 +111,10 @@ export class IndexUsuariosComponent implements OnInit {
 
   eliminarCliente() {
     this._clienteService.eliminarClienteAdmin(this.clienteSelected._id).subscribe(resp => {
+      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente eliminado con exito!' });
+
       this.loadUsers();
       this.modalEliminarCliente = false;
-
     });
   }
 

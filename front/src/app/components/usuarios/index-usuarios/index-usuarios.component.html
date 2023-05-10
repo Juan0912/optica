@@ -85,14 +85,10 @@
                 </td>
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
-                        <button pButton pRipple type="button" icon="pi pi-plus-circle"
-                            class="p-button-rounded p-button-text" pTooltip="Agregar historia clínica"></button>
-                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"
-                            (click)="abrirModalDetalle(cliente)" pTooltip="Detalle"></button>
-                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text"
-                            [routerLink]="['/usuarios/editar', cliente._id]" pTooltip="Editar cliente"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
-                            (click)="abrirModalEliminarCliente(cliente)" pTooltip="Eliminar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-book" class="p-button-rounded p-button-text" [routerLink]="['/usuarios/historia-clinica/inicio', cliente._id]" pTooltip="Historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" (click)="abrirModalDetalle(cliente)" pTooltip="Detalle"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" [routerLink]="['/usuarios/editar', cliente._id]" pTooltip="Editar cliente"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarCliente(cliente)" pTooltip="Eliminar cliente"></button>
                     </div>
                 </td>
 

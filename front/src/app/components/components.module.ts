@@ -6,6 +6,7 @@ import { SharedsModule } from './shareds/shareds.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../interceptor/token.interceptor';
 import { CitasModule } from './citas/citas.module';
+import { AgendaLlamadasModule } from './agenda-llamadas/agenda-llamadas.module';
 
 
 
@@ -13,13 +14,14 @@ import { CitasModule } from './citas/citas.module';
 
 
 @NgModule({
-  declarations: [ ],
+  declarations: [],
   imports: [
     CommonModule,
     UsuariosModule,
     ComponentsRoutingModule,
     SharedsModule,
-    CitasModule
+    CitasModule,
+    AgendaLlamadasModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

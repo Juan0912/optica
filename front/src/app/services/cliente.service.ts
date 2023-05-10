@@ -45,5 +45,10 @@ export class ClienteService {
     return this._http.get(`${this.url}buscarClientePorIdentificacion/${identificacion}`);
   }
 
+  listarClientesAgendaLlamada(): Observable<any> {
+    // Request.
+    return this._http.get(`${this.url}listarClientes/`);
+  }
+
 
 }

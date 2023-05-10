@@ -1,0 +1,91 @@
+<div class="card d-flex justify-content-between" style="flex-direction: row !important;">
+    <h3>Historia Clínica</h3>
+    <div>
+        <p-button label="Crear" routerLinkActive="router-link-active" [routerLink]="['/usuarios/historia-clinica/registro', id]"
+            styleClass="p-button-rounded p-button-success"></p-button>
+    </div>
+</div>
+
+<div class="card" *ngIf="historiasClinicas.length > 0">
+    <p-table #dt1 [value]="historiasClinicas" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        #
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Antecedentes
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        Edad
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        RX Ojo derecho
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        RX Ojo izquierdo
+                    </div>
+                </th>
+
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        <span>Opciones</span>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-historiaClinica let-rowIndex="rowIndex">
+            <tr>
+                <td>
+                    {{rowIndex + 1}}
+                </td>
+                <td>
+                    {{ historiaClinica.antecedentes }}
+                </td>
+                <td>
+                    {{ historiaClinica.motivo }}
+                </td>
+                <td>
+                    {{ historiaClinica.od }}
+                </td>
+                <td>
+                    {{ historiaClinica.oi }}
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" pTooltip="Detalle"></button>
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" pTooltip="Editar historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" pTooltip="Eliminar historia clínica"></button>
+                    </div>
+                </td>
+
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se han encontrado usuarios</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div class="card text-center" *ngIf="historiasClinicas.length == 0">
+    <div class="alert alert-primary" role="alert">
+        El paciente no tiene historias clínicas registradas!
+      </div>
+</div>
+
+
