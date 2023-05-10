@@ -8,7 +8,6 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { SliderModule } from 'primeng/slider';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
@@ -19,12 +18,16 @@ import { MenubarModule } from 'primeng/menubar';
 
 import { CreateUsuarioComponent } from './create-usuario/create-usuario.component';
 import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
+import { IndexHistoriaClinicaComponent } from './historia-clinica/index-historia-clinica/index-historia-clinica.component';
+import { CreateHistoriaClinicaComponent } from './historia-clinica/create-historia-clinica/create-historia-clinica.component';
 
 @NgModule({
   declarations: [
     IndexUsuariosComponent,
     CreateUsuarioComponent,
-    EditUsuarioComponent
+    EditUsuarioComponent,
+    IndexHistoriaClinicaComponent,
+    CreateHistoriaClinicaComponent
   ],
   imports: [
     FormsModule,
