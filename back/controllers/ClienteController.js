@@ -60,7 +60,7 @@ const obtenerClientesALlamar = async (req, res) => {
                 const fecha1 = moment(clienteItem.historiaClinica[0].createdAt);
                 const fecha2 = moment().tz('America/Bogota');
                 const diferenciaEnDias = fecha2.diff(fecha1, 'days');
-                if (diferenciaEnDias == 350) clientesALlamar.push(clienteItem);
+                if (diferenciaEnDias >= 350 && diferenciaEnDias <= 364) clientesALlamar.push(clienteItem);
             }
         })
 
