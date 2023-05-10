@@ -4,6 +4,7 @@
 const cliente = require("../models/cliente");
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('../helpers/jwt');
+const moment = require('moment-timezone');
 
 
 // ========================================================== MÉTODOS CONTROLADOR ====================================================
@@ -54,17 +55,15 @@ const obtenerClientesALlamar = async (req, res) => {
         let clienteEncontrado = await cliente.find();
         let clientesALlamar = [];
 
-        clienteEncontrado.map((cliente) => {
-            if (cliente.historiaClinica.length > 0) {
-                const fecha1 = new Date(historiaClinica[0].createdAt);
-                const fecha2 = new Date();
-                const unDiaEnMilisegundos = 86400000; // 1000 ms x 60 s x 60 m x 24 h
-
-                const diferenciaEnMilisegundos = Math.abs(fecha2 - fecha1);
-                const diferenciaEnDias = Math.floor(diferenciaEnMilisegundos / unDiaEnMilisegundos);
-                if (diferenciaEnDias == 350) clientesALlamar.push(cliente);
+        clienteEncontrado.map((clienteItem) => {
+            if (clienteItem.historiaClinica.length > 0) {
+                const fecha1 = moment(clienteItem.historiaClinica[0].createdAt);
+                const fecha2 = moment().tz('America/Bogota');
+                const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                if (diferenciaEnDias == 350) clientesALlamar.push(clienteItem);
             }
         })
+
 
         res.status(200).send({
             datos: clientesALlamar,
