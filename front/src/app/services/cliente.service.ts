@@ -47,7 +47,7 @@ export class ClienteService {
 
   listarClientesAgendaLlamada(): Observable<any> {
     // Request.
-    return this._http.get(`${this.url}listarClientes/`);
+    return this._http.get(`${this.url}obtenerClientesALlamar`);
   }
 
 
