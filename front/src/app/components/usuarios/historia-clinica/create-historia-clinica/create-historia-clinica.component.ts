@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 import { MessageService } from 'primeng/api';
 import { ClienteService } from 'src/app/services/cliente.service';
 
@@ -36,7 +36,7 @@ export class CreateHistoriaClinicaComponent {
 
       this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
         this.cliente = resp.datos;
-        this.historiaClinica.createdAt = moment();
+        this.historiaClinica.createdAt = moment().tz('America/Bogota');
         
         this.cliente.historiaClinica.unshift(this.historiaClinica);
 
