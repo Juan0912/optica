@@ -96,9 +96,54 @@ export class IndexHistoriaClinicaComponent implements OnInit {
 
   exportPDF() {
     const doc: any = new jsPDF();
-    doc.text("Historia clínica", 80, 10,);
-    // Guarda el documento PDF
-    doc.save("ejemplo.pdf");
+
+    // Agrega el título "Historia Clínica"
+    doc.setFontSize(18);
+    doc.setFontType("bold");
+    doc.text("Historia Clínica", 20, 20);
+
+    // Agrega las secciones de información
+    doc.setFontSize(12);
+    doc.setFontType("bold");
+    doc.text("Edad:", 20, 35);
+    doc.setFontType("normal");
+    doc.text("40", 60, 35);
+    doc.setFontType("bold");
+    doc.text("Ocupación:", 100, 35);
+    doc.setFontType("normal");
+    doc.text("Independiente", 150, 35);
+
+    doc.setFontType("bold");
+    doc.text("Ojo izquierdo:", 20, 45);
+    doc.setFontType("normal");
+    doc.text("hola", 60, 45);
+    doc.setFontType("bold");
+    doc.text("Ojo derecho:", 100, 45);
+    doc.setFontType("normal");
+    doc.text("hola", 150, 45);
+
+    doc.setFontType("bold");
+    doc.text("Antecedentes:", 20, 55);
+    doc.setFontType("normal");
+    doc.text("hola", 60, 55);
+    doc.setFontType("bold");
+    doc.text("Tipo de lente:", 100, 55);
+    doc.setFontType("normal");
+    doc.text("hola", 150, 55);
+
+    // Agrega las secciones adicionales
+    doc.setFontType("bold");
+    doc.text("Motivo:", 20, 70);
+    doc.setFontType("normal");
+    doc.text("El cliente manifiesta que permanece sentado en el computador mas de 5 horas al día, quiere realizarse el examen médico para usar gafas y proteger los ojos de la larga exposición a la luz artificial de las pantallas.", 20, 75, { maxWidth: 170, align: "justify" });
+
+    doc.setFontType("bold");
+    doc.text("Observaciones:", 20, 105);
+    doc.setFontType("normal");
+    doc.text("Carboximetilcelulosa 0.5% Una gota 3 veces al día - Control en 1 año", 20, 110, { maxWidth: 170, align: "justify" });
+
+    // Guarda el documento PDF generado
+    doc.save("historia_clinica.pdf");
 
   }
 

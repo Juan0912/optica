@@ -55,9 +55,12 @@ const actualizarCita = async (req, res) => {
 
     // Se valida existencia del usuario.
     let elementoActualizado = await cita.findOneAndUpdate({ _id: idCita }, {
+        nombres: data.nombres,
+        apellidos: data.apellidos,
+        correo: data.correo,
+        telefono: data.telefono,
         fecha: data.fecha,
-        hora: data.hora,
-        cliente: data.cliente
+        hora: data.hora
     });
 
     res.status(200).send({
