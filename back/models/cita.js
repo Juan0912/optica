@@ -10,7 +10,7 @@ const CitaSchema = Schema({
     apellidos: { type: String, required: true },
     correo: { type: String, required: true },
     telefono: { type: String, required: true },
-    fecha: { type: Date, required: true },
+    fecha: { type: String, required: true },
     hora: { type: String, required: true },
     createdAt: { type: Date, required: true, default: Date.now },
 });
