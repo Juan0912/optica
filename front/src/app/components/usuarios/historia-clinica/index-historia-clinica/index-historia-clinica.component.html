@@ -1,7 +1,11 @@
 <div class="card d-flex justify-content-between" style="flex-direction: row !important;">
-    <h3>Historia Clínica</h3>
+    <h3>Historia Clínica <span class="text-muted">/ {{cliente.datos?.nombres}} {{cliente.datos?.apellidos}}</span></h3>
+
     <div>
-        <p-button label="Crear" routerLinkActive="router-link-active" [routerLink]="['/usuarios/historia-clinica/registro', id]"
+        <p-button label="Regresar" routerLinkActive="router-link-active" [routerLink]="['/usuarios/inicio']"
+            styleClass="p-button-rounded p-button-warning mr-2"></p-button>
+        <p-button label="Crear" routerLinkActive="router-link-active"
+            [routerLink]="['/usuarios/historia-clinica/registro', id]"
             styleClass="p-button-rounded p-button-success"></p-button>
     </div>
 </div>
@@ -53,11 +57,13 @@
                 </td>
                 <td class="text-center">
                     <small class="text-muted">
-                        <i class=" pi pi-calendar" aria-hidden="true"></i> {{historiaClinica.createdAt | date : 'dd/MM/yyyy' }} &nbsp;&nbsp;
-                        <i class="pi pi-clock" aria-hidden="true"></i> {{historiaClinica.createdAt | date : 'mediumTime' }} &nbsp;&nbsp;
-                    </small>                    
+                        <i class=" pi pi-calendar" aria-hidden="true"></i> {{historiaClinica.createdAt | date :
+                        'dd/MM/yyyy' }} &nbsp;&nbsp;
+                        <i class="pi pi-clock" aria-hidden="true"></i> {{historiaClinica.createdAt | date : 'mediumTime'
+                        }} &nbsp;&nbsp;
+                    </small>
                 </td>
-                
+
                 <td class="text-center">
                     {{ historiaClinica.edadRealizaExamen }} años
                 </td>
@@ -69,8 +75,11 @@
                 </td>
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
-                        <button pButton pRipple type="button" icon="pi pi-print" class="p-button-rounded p-button-text" (click)="detalle(historiaClinica)" pTooltip="Imprimir historia clínica"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarHistoriaClinica(rowIndex)" pTooltip="Eliminar historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-print" class="p-button-rounded p-button-text"
+                            (click)="detalle(historiaClinica)" pTooltip="Imprimir historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
+                            (click)="abrirModalEliminarHistoriaClinica(rowIndex)"
+                            pTooltip="Eliminar historia clínica"></button>
                     </div>
                 </td>
 
@@ -88,12 +97,12 @@
 <div class="card text-center" *ngIf="historiasClinicas.length == 0">
     <div class="alert alert-primary" role="alert">
         El paciente no tiene historias clínicas registradas!
-      </div>
+    </div>
 </div>
 
 <!-- Modal imprimir historia clínica -->
-<p-dialog header="Confirmar" [(visible)]="modalImprimir" [modal]="true" [style]="{ width: '50vw' }"
-    [draggable]="false" [resizable]="false">
+<p-dialog header="Confirmar" [(visible)]="modalImprimir" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false"
+    [resizable]="false">
     <div class="text-center">
 
         <div class="card box-shadow-sm">
@@ -104,38 +113,48 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Edad (en años)</label>
-                        <input class="form-control" type="text" name="edad" [(ngModel)]="historiaClinicaAImprimir.edadRealizaExamen" disabled required>
+                        <input class="form-control" type="text" name="edad"
+                            [(ngModel)]="historiaClinicaAImprimir.edadRealizaExamen" disabled required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Ocupación</label>
-                        <input class="form-control" type="text" name="ocupacion" [(ngModel)]="historiaClinicaAImprimir.ocupacion" disabled placeholder="Ocupación" required>
+                        <input class="form-control" type="text" name="ocupacion"
+                            [(ngModel)]="historiaClinicaAImprimir.ocupacion" disabled placeholder="Ocupación" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                        <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinicaAImprimir.oi" disabled placeholder="RX ojo izquierdo" required>
-                    </div>                
+                        <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinicaAImprimir.oi"
+                            disabled placeholder="RX ojo izquierdo" required>
+                    </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                        <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinicaAImprimir.od" disabled placeholder="RX ojo derecho" required>
+                        <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinicaAImprimir.od"
+                            disabled placeholder="RX ojo derecho" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Antecedentes</label>
-                        <input class="form-control" type="text" name="antecedentes" [(ngModel)]="historiaClinicaAImprimir.antecedentes" disabled placeholder="Antecedentes médicos" required>
+                        <input class="form-control" type="text" name="antecedentes"
+                            [(ngModel)]="historiaClinicaAImprimir.antecedentes" disabled
+                            placeholder="Antecedentes médicos" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Tipo de lente </label>
-                        <input class="form-control" type="text" name="tipoLente" [(ngModel)]="historiaClinicaAImprimir.tipoLente" disabled placeholder="Tipo de lente" required>
+                        <input class="form-control" type="text" name="tipoLente"
+                            [(ngModel)]="historiaClinicaAImprimir.tipoLente" disabled placeholder="Tipo de lente"
+                            required>
                     </div>
-    
+
                     <div class="col-12 ">
                         <label for="validationCustom01" class="form-label">Motivo </label>
-                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.motivo" name="motivo" disabled placeholder="Motivo de la consulta" required ></textarea>
+                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.motivo"
+                            name="motivo" disabled placeholder="Motivo de la consulta" required></textarea>
                     </div>
-    
+
                     <div class="col-12 ">
                         <label for="validationCustom01" class="form-label">Observaciones </label>
-                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.observaciones" name="observaciones" disabled placeholder="Observaciones" required ></textarea>
-                    </div>                           
+                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.observaciones"
+                            name="observaciones" disabled placeholder="Observaciones" required></textarea>
+                    </div>
                 </div>
             </div>
         </div>
@@ -172,6 +191,3 @@
     </ng-template>
 
 </p-dialog>
-
-
-
