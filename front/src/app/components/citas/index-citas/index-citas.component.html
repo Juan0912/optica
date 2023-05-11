@@ -126,7 +126,7 @@
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
                         <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" [routerLink]="['/consultas/editar', consulta._id]" pTooltip="Editar"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"  pTooltip="Eliminar"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarCita(consulta)"  pTooltip="Eliminar"></button>
                     </div>
                 </td>
 
@@ -146,3 +146,23 @@
         No hay consultas programadas.
       </div>
 </div>
+
+<!-- Modal eliminar cliente -->
+<p-dialog header="Confirmar" [(visible)]="modalEliminarCita" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div class="text-center">
+
+        <div class="mb-5">
+            <img [src]="imgAlerta" alt="Faild" style="width: 90px;">
+        </div>
+
+        <p>¿Realmente deseas eliminar al consulta agendada a <strong>{{cosultaSelected.nombres}} {{cosultaSelected.apellidos}}</strong>?<strong> Este proceso no se puede deshacer. </strong></p>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="eliminarCita()" label="Sí, eliminar" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="modalEliminarCita = false" label="Cancelar" styleClass="p-button-danger p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>

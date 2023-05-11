@@ -47,9 +47,8 @@ export class EditUsuarioComponent implements OnInit {
     if(form.valid){
       this._clienteService.actualizarClienteAdmin(this.cliente).subscribe(resp => {
         this._router.navigateByUrl('/usuarios/inicio');
-        this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente actualizado con exito!' });
-        
-      })
+        this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente actualizado con éxito!' });  
+      });
     }
   }
 

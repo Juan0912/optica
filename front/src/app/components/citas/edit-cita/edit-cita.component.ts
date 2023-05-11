@@ -28,7 +28,7 @@ export class EditCitaComponent implements OnInit {
   actualizarConsulta(form: NgForm){
     if(form.valid){
       this._requestService.put(`actualizarCita/${this.id}`, this.consulta).subscribe(resp => {
-        this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente actualizado con exito!' });
+        this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente actualizado con éxito!' });
         this._router.navigateByUrl('/consultas/inicio');
       });
     } else {
@@ -41,7 +41,6 @@ export class EditCitaComponent implements OnInit {
       this.id = params['id'];      
     });
     this._requestService.get(`obtenerCita/${this.id}`).subscribe(resp => {
-      console.log(resp);
       this.consulta = resp.datos;
     });
   }

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
                 if (res.resultadoExitoso) {
                     localStorage.setItem('token', res.token);
                     localStorage.setItem('_id', res.datos._id);
-                    this._alertService.showAlert$.emit({ type: 'success', message: res.mensaje, title: 'Exito!' })
+                    this._alertService.showAlert$.emit({ type: 'success', message: res.mensaje, title: 'Éxito!' })
                     this._router.navigate(['/panel']);
                 } else  this._alertService.showAlert$.emit({ type: 'error', message: res.mensaje, title: 'Opps!' })
             })

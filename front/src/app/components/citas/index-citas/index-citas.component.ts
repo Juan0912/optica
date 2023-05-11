@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterMatchMode, SelectItem } from 'primeng/api';
+import { FilterMatchMode, MessageService, SelectItem } from 'primeng/api';
 import { ConsultaService } from 'src/app/services/consulta.service';
 import { RequestsService } from '../../../services/requests.service';
+import { log } from 'console';
 
 declare var $: any;
 
@@ -16,12 +17,18 @@ export class IndexCitasComponent implements OnInit{
   consultas : any = [];
   dateSelectedFilter : string = '';
 
+  modalEliminarCita: boolean = false;
+  cosultaSelected: any = {};
+  imgAlerta: string = 'assets/images/alerta.png';
+
+
   public loading: boolean = false;
   public matchModeOptions: SelectItem[] = [];
   public statuses!: any[];
 
   constructor(private _consultaService: ConsultaService,
-              private _requestService: RequestsService){
+              private _requestService: RequestsService,
+              private _messageService: MessageService){
 
   }
 
@@ -37,7 +44,6 @@ export class IndexCitasComponent implements OnInit{
     this.dateSelectedFilter = event;
 
     this._requestService.post('listarCitasPorFecha', {fecha: this.dateSelectedFilter}).subscribe(resp => {
-      console.log(resp);
       this.consultas = resp.datos;
     });
 
@@ -45,14 +51,12 @@ export class IndexCitasComponent implements OnInit{
 
   listarTodasCitas(){
     this._consultaService.listarTodasCitas().subscribe(resp => {
-      console.log(resp);
       this.consultas = resp.datos;     
     });
   }
 
   listarCitasDia(){
     this._consultaService.listarCitasDia().subscribe(resp => {
-      console.log(resp);
       this.consultas = resp.datos;     
     });
   }  
@@ -60,5 +64,20 @@ export class IndexCitasComponent implements OnInit{
   limpiarTabla(){
     this.consultas.length = 0;
   }
+
+  abrirModalEliminarCita(cita: any){
+    this.modalEliminarCita = true;
+    this.cosultaSelected = cita;
+  }
+
+  eliminarCita(){
+    this._requestService.delete(`eliminarCita/${this.cosultaSelected._id}`).subscribe(resp => {
+      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Consulta eliminada de la agenda con éxito!' });  
+      this.listarTodasCitas();   
+    });
+    this.modalEliminarCita = false;
+  }
+
+
 
 }

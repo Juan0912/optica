@@ -70,8 +70,6 @@ export class IndexHistoriaClinicaComponent implements OnInit {
         this.historiasClinicas = resp.datos.historiaClinica;
         this.cliente = localStorage.getItem('cliente');
         this.cliente = JSON.parse(this.cliente);
-        console.log(this.historiasClinicas);
-        console.log(this.cliente);
 
       }
 
@@ -157,7 +155,7 @@ export class IndexHistoriaClinicaComponent implements OnInit {
     this.modalEliminarHistoriaClinica = false;
     this.cliente.datos.historiaClinica.splice(this.index, 1);
     this._clienteService.actualizarClienteAdmin(this.cliente.datos).subscribe(resp => {
-      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clinica eliminada con exito!' });
+      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clínica eliminada con éxito!' });
       this.initData();
     });
   }

@@ -102,7 +102,6 @@ export class IndexUsuariosComponent implements OnInit {
   abrirModalDetalle(cliente: any) {
     this.clienteSelected = cliente;
     this.calcularEdadDetalleModal()
-    console.log(this.clienteSelected);
     this.modalAbrirDetalle = true;
 
   }
@@ -115,7 +114,7 @@ export class IndexUsuariosComponent implements OnInit {
 
   eliminarCliente() {
     this._clienteService.eliminarClienteAdmin(this.clienteSelected._id).subscribe(resp => {
-      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente eliminado con exito!' });
+      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente eliminado con éxito!' });
 
       this.loadUsers();
       this.modalEliminarCliente = false;

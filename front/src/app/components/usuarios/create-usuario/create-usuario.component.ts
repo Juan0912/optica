@@ -31,12 +31,11 @@ export class CreateUsuarioComponent implements OnInit {
     if(form.valid){
 
       this._clienteService.registroClienteAdmin(this.cliente).subscribe(resp => {
-        console.log(resp);
           
         if(resp.resultadoExitoso == false) {
           this._messageService.add({ severity: 'error', summary: 'Error', detail: resp.mensaje });
         } else {
-          this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente creado con exito!' });
+          this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente creado con éxito!' });
           this._router.navigateByUrl('/usuarios/inicio');
         }
 

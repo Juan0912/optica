@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { log } from 'console';
 import * as moment from 'moment-timezone';
 import { MessageService } from 'primeng/api';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -44,11 +43,9 @@ export class CreateHistoriaClinicaComponent {
         
         this.cliente.historiaClinica.unshift(this.historiaClinica);
 
-        console.log(this.cliente);
-
         this._clienteService.actualizarClienteAdmin(this.cliente).subscribe(resp => {
           console.log(resp);          
-          this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clínica creada con exito!' });
+          this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clínica creada con éxito!' });
           this._router.navigateByUrl('/usuarios/inicio');        
         });
 

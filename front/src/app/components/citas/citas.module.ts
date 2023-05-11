@@ -8,6 +8,7 @@ import { IndexCitasComponent } from "../citas/index-citas/index-citas.component"
 import { FormsModule } from '@angular/forms';
 import { CreateCitaComponent } from './create-cita/create-cita.component';
 import { EditCitaComponent } from './edit-cita/edit-cita.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 
@@ -23,7 +24,8 @@ import { EditCitaComponent } from './edit-cita/edit-cita.component';
     CalendarModule,
     TableModule,
     FormsModule,
-    MenuModule
+    MenuModule,
+    DialogModule
   ]
 })
 export class CitasModule { }
