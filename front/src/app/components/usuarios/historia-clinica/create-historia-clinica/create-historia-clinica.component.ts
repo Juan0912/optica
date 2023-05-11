@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { log } from 'console';
 import * as moment from 'moment-timezone';
 import { MessageService } from 'primeng/api';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -15,6 +16,7 @@ export class CreateHistoriaClinicaComponent {
   public historiaClinica: any = {};
   public cliente: any = {};
   public id: any;
+  public edad: any;
 
   constructor(private _messageService: MessageService,
               private _clienteService: ClienteService,
@@ -27,6 +29,7 @@ export class CreateHistoriaClinicaComponent {
     this._route.params.subscribe(params => {
       this.id = params['id'];      
     });
+    this.calcularEdad();
   }
 
 
@@ -36,7 +39,8 @@ export class CreateHistoriaClinicaComponent {
 
       this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
         this.cliente = resp.datos;
-        this.historiaClinica.createdAt = moment().tz('America/Bogota');
+        this.historiaClinica.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+        this.historiaClinica.edadRealizaExamen = this.edad;
         
         this.cliente.historiaClinica.unshift(this.historiaClinica);
 
@@ -54,6 +58,19 @@ export class CreateHistoriaClinicaComponent {
     } else {
       this._messageService.add({ severity: 'error', summary: 'Error', detail: 'Todos los campos son requeridos' });
     }
+  }
+
+  calcularEdad(){
+
+    let fechaNacimiento;
+    const formatoFecha = "YYYY-MM-DD";
+
+    this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
+      // Calcula la edad actual
+      fechaNacimiento = resp.datos.fNacimiento
+      const edad = moment().diff(moment(fechaNacimiento, formatoFecha), 'years');
+      this.edad = edad;
+    });    
   }
 
   

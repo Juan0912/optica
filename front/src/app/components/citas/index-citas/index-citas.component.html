@@ -1,7 +1,7 @@
 <div class="card d-flex justify-content-between" style="flex-direction: row !important;">
     <h3>Módulo de Consultas</h3>
     <div>
-        <p-button label="Agendar consulta" routerLinkActive="router-link-active" routerLink="/usuarios/registro"
+        <p-button label="Agendar Consulta" [routerLink]="['/consultas/registro']" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" 
             styleClass="p-button-rounded p-button-success"></p-button>
     </div>
 </div>
@@ -14,16 +14,12 @@
             <div class="flex justify-content-center mb-3">
                 <div>
                     <div class="mb-3">
-                        <p-button label="Listar consultas" routerLinkActive="router-link-active"
-                            (click)="tableShow = true"
-                            styleClass="p-button-raised p-button-text p-button-info p-button-sm"></p-button>&nbsp;&nbsp;
-                        <p-button label="Limpiar tabla" routerLinkActive="router-link-active"
-                            (click)="tableShow = false"
-                            styleClass="p-button-raised p-button-text p-button-info p-button-sm"></p-button>
+                        <p-button label="Consultar" routerLinkActive="router-link-active" (click)="listarCitasDia()" styleClass="p-button-raised p-button-text p-button-info p-button-sm"></p-button>&nbsp;&nbsp;
+                        <p-button label="Limpiar tabla" routerLinkActive="router-link-active" (click)="limpiarTabla()" styleClass="p-button-raised p-button-text p-button-info p-button-sm"></p-button>
                     </div>
                 </div>
             </div>
-            <span class="block text-500 font-medium mb-6">Total consultas:<div class="text-900 font-medium text-xl">152</div>
+            <span class="block text-500 font-medium mb-6">Total consultas:<div class="text-900 font-medium text-xl">{{consultas.length}}</div>
             </span>
 
         </div>
@@ -53,16 +49,14 @@
             <div class="flex justify-content-center mb-3">
                 <div>
                     <div class="mb-3">
-                        <p-button label="Listar consultas" routerLinkActive="router-link-active"
-                            (click)="tableShow = true"
+                        <p-button label="Consultar" (click)="listarTodasCitas()" (click)="limpiarTabla()"
                             styleClass="p-button-raised p-button-text p-button-info p-button-sm"></p-button>&nbsp;&nbsp;
-                        <p-button label="Limpiar tabla" routerLinkActive="router-link-active"
-                            (click)="tableShow = false"
+                        <p-button label="Limpiar tabla" (click)="limpiarTabla()"
                             styleClass="p-button-raised p-button-text p-button-info p-button-sm"></p-button>
                     </div>
                 </div>
             </div>
-            <span class="block text-500 font-medium mb-6">Total consultas:<div class="text-900 font-medium text-xl">152
+            <span class="block text-500 font-medium mb-6">Total consultas:<div class="text-900 font-medium text-xl">{{consultas.length}}
                 </div>
             </span>
 
@@ -70,23 +64,74 @@
     </div>
 </div>
 
-<div class="card" *ngIf="tableShow">
-    <table>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Cédula</th>
-            <th>Fecha consulta</th>
-            <th>Hora consulta</th>
-        </tr>
+<div class="card" *ngIf="consultas.length >= 1">
+    <p-table #dt1 [value]="consultas" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros">
 
-        <tbody>
-            <td>Juan Manuel</td>
-            <td>Gallego Toro</td>
-            <td>1053854254</td>
-            <td>09-05-2023</td>
-            <td>10:22 AM</td>
-        </tbody>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:4rem">
+                    <div class="flex align-items-center">
+                        #
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="text-center">
+                        Nombres
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="text-center">
+                        Apellidos
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        Teléfono
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="text-center">
+                        Fecha
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-consulta let-rowIndex="rowIndex">
+            <tr>
+                <td>
+                    {{rowIndex + 1}}
+                </td>
+                <td class="text-center">
+                    {{consulta.nombres}}
+                </td>                
+                <td class="text-center">
+                    {{ consulta.apellidos }}
+                </td>
+                <td>
+                    {{ consulta.telefono }}
+                </td>
+                <td class="text-center">
+                    <small class="text-muted">
+                        <i class=" pi pi-calendar" aria-hidden="true"></i> {{consulta.fecha | date : 'dd/MM/yyyy' }} &nbsp;&nbsp;
+                        <i class="pi pi-clock" aria-hidden="true"></i> {{consulta.hora }} &nbsp;&nbsp;
+                    </small>                    
+                </td>
 
-    </table>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No se han encontrado usuarios</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div class="card text-center" *ngIf="consultas.length == 0">
+    <div class="alert alert-primary" role="alert">
+        No hay consultas programadas.
+      </div>
 </div>

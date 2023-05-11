@@ -27,7 +27,7 @@ import { CreateHistoriaClinicaComponent } from './historia-clinica/create-histor
     CreateUsuarioComponent,
     EditUsuarioComponent,
     IndexHistoriaClinicaComponent,
-    CreateHistoriaClinicaComponent
+    CreateHistoriaClinicaComponent,
   ],
   imports: [
     FormsModule,

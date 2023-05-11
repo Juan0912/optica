@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FilterMatchMode, MessageService, SelectItem } from 'primeng/api';
 import { ClienteService } from '../../../../services/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { log } from 'console';
 
 
 @Component({
@@ -12,7 +11,15 @@ import { log } from 'console';
 })
 export class IndexHistoriaClinicaComponent implements OnInit {
 
+  cliente : any = {};
   historiasClinicas : any = [];
+  historiaClinicaAImprimir: any = {};
+  modalImprimir: boolean = false;
+  modalEliminarHistoriaClinica: boolean = false;
+  index: number = 0;
+
+
+  imgAlerta: string = 'assets/images/alerta.png';
 
   public loading: boolean = false;
   public matchModeOptions: SelectItem[] = [];
@@ -48,11 +55,54 @@ export class IndexHistoriaClinicaComponent implements OnInit {
         this._router.navigateByUrl('/usuarios/inicio');
         this._messageService.add({ severity: 'error', summary: 'Error', detail: resp.mensaje });
       } else {
+
+        
+        if(localStorage.getItem('cliente')){
+          localStorage.removeItem('cliente');
+          localStorage.setItem('cliente', JSON.stringify(resp));
+        } else {
+          localStorage.setItem('cliente', JSON.stringify(resp));
+        }
+
         this.historiasClinicas = resp.datos.historiaClinica;
-        console.log(this.historiasClinicas);   
+        this.cliente = localStorage.getItem('cliente');
+        this.cliente = JSON.parse(this.cliente);
+        console.log(this.historiasClinicas);
+        console.log(this.cliente);
+        
       }
 
     });
   }
+
+  abrirModalImprimirHistoriaClinica(){
+    this.modalImprimir = true;
+  }
+
+  detalle(historiaClinica: any){    
+    this.historiaClinicaAImprimir = historiaClinica;
+    this.abrirModalImprimirHistoriaClinica();
+  }
+
+  imprimirHistoriaClinica(){
+    console.log(this.historiaClinicaAImprimir);
+    this.modalImprimir = false;
+  }
+
+  abrirModalEliminarHistoriaClinica(index: number){
+    this.modalEliminarHistoriaClinica = true;
+    this.index = index;
+  }
+
+  eliminarHistoriaClinica(){
+    this.modalEliminarHistoriaClinica = false;
+    this.cliente.datos.historiaClinica.splice(this.index, 1);
+    this._clienteService.actualizarClienteAdmin(this.cliente.datos).subscribe(resp => {
+      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clinica eliminada con exito!' });
+      this.initData();    
+    });     
+  }
+
+
 
 }

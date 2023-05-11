@@ -5,6 +5,7 @@ import { Representative } from 'src/app/demo/api/customer';
 import { RequestsService } from 'src/app/services/requests.service';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
+import * as moment from 'moment';
 
 
 @Component({
@@ -33,7 +34,9 @@ export class IndexUsuariosComponent implements OnInit {
   modalAbrirDetalle: boolean = false;
   modalEliminarCliente: boolean = false;
   clienteSelected: any = {};
+  edadClienteSelected: any;
 
+  imgAlerta: string = 'assets/images/alerta.png';
 
 
   ngOnInit() {
@@ -98,6 +101,7 @@ export class IndexUsuariosComponent implements OnInit {
 
   abrirModalDetalle(cliente: any) {
     this.clienteSelected = cliente;
+    this.calcularEdadDetalleModal()
     console.log(this.clienteSelected);
     this.modalAbrirDetalle = true;
 
@@ -116,6 +120,18 @@ export class IndexUsuariosComponent implements OnInit {
       this.loadUsers();
       this.modalEliminarCliente = false;
     });
+  }
+
+  calcularEdadDetalleModal(){
+  
+    let fechaNacimiento = this.clienteSelected.fNacimiento;
+    const formatoFecha = "YYYY-MM-DD";
+
+    // Calcula la edad actual
+    const edad = moment().diff(moment(fechaNacimiento, formatoFecha), 'years');
+
+    this.edadClienteSelected = edad;
+    
   }
 
 }

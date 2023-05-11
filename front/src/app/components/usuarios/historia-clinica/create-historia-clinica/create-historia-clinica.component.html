@@ -14,41 +14,40 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-4 form-group">
-                    <label for="validationCustom01" class="form-label">Motivo</label>
-                    <input class="form-control" type="text" name="motivo" [(ngModel)]="historiaClinica.motivo" placeholder="Motivo de la consulta" required>
+
+                <div class="col-12 ">
+                    <label for="validationCustom01" class="form-label">Motivo </label>
+                    <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinica.motivo" name="motivo" placeholder="Motivo de la consulta" required ></textarea>
                 </div>
-                <div class="col-md-4 form-group">
+
+                <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Edad (en años)</label>
-                    <input class="form-control" type="text" name="edad" [(ngModel)]="historiaClinica.edad" placeholder="Edad" required>
+                    <input class="form-control" type="text" name="edad" [value]="edad" [(ngModel)]="historiaClinica.edad" disabled required>
                 </div>
-                <div class="col-md-4 form-group">
+                <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Ocupación</label>
                     <input class="form-control" type="text" name="ocupacion" [(ngModel)]="historiaClinica.ocupacion" placeholder="Ocupación" required>
                 </div>
-
-                <div class="col-md-4 form-group">
-                    <label for="validationCustom01" class="form-label">Antecedentes</label>
-                    <input class="form-control" type="text" name="antecedentes" [(ngModel)]="historiaClinica.antecedentes" placeholder="Antecedentes médicos" required>
-                </div>                
-                <div class="col-md-4 form-group">
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
+                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                </div>               
+                <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Ojo derecho </label>
                     <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinica.od" placeholder="RX ojo derecho" required>
                 </div>
-                <div class="col-md-4 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Antecedentes</label>
+                    <input class="form-control" type="text" name="antecedentes" [(ngModel)]="historiaClinica.antecedentes" placeholder="Antecedentes médicos" required>
                 </div>
-                <div class="col-md-4 form-group">
+                <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Tipo de lente </label>
                     <input class="form-control" type="text" name="tipoLente" [(ngModel)]="historiaClinica.tipoLente" placeholder="Tipo de lente" required>
                 </div>
-                <div class="col-md-4 form-group">
+                <div class="col-12 ">
                     <label for="validationCustom01" class="form-label">Observaciones </label>
-                    <textarea rows="4" cols="50" [(ngModel)]="historiaClinica.observaciones" name="observaciones" placeholder="Observaciones" required ></textarea>
-                </div>
-                
-
+                    <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinica.observaciones" name="observaciones" placeholder="Observaciones" required ></textarea>
+                </div>             
                 
             </div>
         </div>

@@ -8,6 +8,7 @@ import { IndexCitasComponent } from './citas/index-citas/index-citas.component';
 import { IndexHistoriaClinicaComponent } from './usuarios/historia-clinica/index-historia-clinica/index-historia-clinica.component';
 import { CreateHistoriaClinicaComponent } from './usuarios/historia-clinica/create-historia-clinica/create-historia-clinica.component';
 import { IndexAgendaLlamadasComponent } from './agenda-llamadas/index-agenda-llamadas/index-agenda-llamadas.component';
+import { CreateCitaComponent } from './citas/create-cita/create-cita.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
@@ -22,9 +23,10 @@ import { IndexAgendaLlamadasComponent } from './agenda-llamadas/index-agenda-lla
             ]
         }, 
         {
-            path: 'citas',
+            path: 'consultas',
             children: [
-                {path: 'inicio', component: IndexCitasComponent, canActivate: [AdminGuard]}
+                {path: 'inicio', component: IndexCitasComponent, canActivate: [AdminGuard]},
+                {path: 'registro', component: CreateCitaComponent, canActivate: [AdminGuard]}
             ]
         },
         {

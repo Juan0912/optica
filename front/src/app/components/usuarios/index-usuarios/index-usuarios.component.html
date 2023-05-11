@@ -30,7 +30,7 @@
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
-                        Nro de Identificación
+                        Número de Identificación
                         <p-columnFilter type="text" field="identificacion" display="menu" [showAddButton]="false"
                             [matchModeOptions]="matchModeOptions" [showOperator]="false"></p-columnFilter>
                     </div>
@@ -135,41 +135,39 @@
                 type="date" required>
         </div>
         <div class="col-md-4 form-group">
+            <label for="validationCustom01" class="form-label">Edad</label>
+            <input class="form-control" disabled [value]="edadClienteSelected + ' años'"
+                type="text" required>
+        </div>        
+        <div class="col-md-4 form-group">
             <label for="validationCustom01" class="form-label">Tipo de documento</label>
-            <select class="form-control custom-select" name="tipoDocumento" disabled
-                [(ngModel)]="clienteSelected.tipoDocumento" required>
-                <option disabled selected value="">Selecciona el tipo de documento</option>
-                <option value="Cédula">Cédula de ciudadanía</option>
-                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                <option value="C. Extranjería">Cédula de extranjería</option>
-            </select>
+            <input class="form-control" type="text" name="identificacion" disabled
+                [(ngModel)]="clienteSelected.tipoDocumento" required placeholder="Número de documento" required>
         </div>
         <div class="col-md-4 form-group">
             <label for="validationCustom01" class="form-label">Número de documento </label>
-            <input class="form-control" type="number" name="identificacion" disabled
+            <input class="form-control" type="text" name="identificacion" disabled
                 [(ngModel)]="clienteSelected.identificacion" required placeholder="Número de documento" required>
         </div>
 
         <div class="col-md-4 form-group">
             <label for="validationCustom01" class="form-label">Género</label>
-            <select class="form-control custom-select" name="genero" disabled [(ngModel)]="clienteSelected.genero"
-                required>
-                <option disabled selected value="">Selecciona el género</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-            </select>
+            <input class="form-control" type="text" name="identificacion" disabled
+                [(ngModel)]="clienteSelected.genero" required placeholder="Número de documento" required>
         </div>
     </div>
 </p-dialog>
 
-
-
 <!-- Modal eliminar cliente -->
 <p-dialog header="Confirmar" [(visible)]="modalEliminarCliente" [modal]="true" [style]="{ width: '50vw' }"
     [draggable]="false" [resizable]="false">
-    <div class="row flex justify-content-center">
+    <div class="text-center">
 
-        <p>Realmente deseas eliminar a <strong>{{clienteSelected.nombres}} {{clienteSelected.apellidos}}</strong>? Este
+        <div class="mb-5">
+            <img [src]="imgAlerta" alt="Faild" style="width: 90px;">
+        </div>
+
+        <p>¿Realmente deseas eliminar a <strong>{{clienteSelected.nombres}} {{clienteSelected.apellidos}}</strong>? Este
             proceso no se puede deshacer. </p>
 
     </div>
@@ -182,4 +180,5 @@
     </ng-template>
 
 </p-dialog>
+
 

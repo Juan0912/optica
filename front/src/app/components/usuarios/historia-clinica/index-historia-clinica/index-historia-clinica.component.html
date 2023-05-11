@@ -13,18 +13,18 @@
 
         <ng-template pTemplate="header">
             <tr>
-                <th style="min-width:15rem">
+                <th style="min-width:4rem">
                     <div class="flex align-items-center">
                         #
                     </div>
                 </th>
                 <th style="min-width:15rem">
-                    <div class="flex align-items-center">
-                        Antecedentes
+                    <div class="text-center">
+                        Fecha
                     </div>
                 </th>
                 <th style="min-width:15rem">
-                    <div class="flex align-items-center">
+                    <div class="text-center">
                         Edad
                     </div>
                 </th>
@@ -51,11 +51,15 @@
                 <td>
                     {{rowIndex + 1}}
                 </td>
-                <td>
-                    {{ historiaClinica.antecedentes }}
+                <td class="text-center">
+                    <small class="text-muted">
+                        <i class=" pi pi-calendar" aria-hidden="true"></i> {{historiaClinica.createdAt | date : 'dd/MM/yyyy' }} &nbsp;&nbsp;
+                        <i class="pi pi-clock" aria-hidden="true"></i> {{historiaClinica.createdAt | date : 'mediumTime' }} &nbsp;&nbsp;
+                    </small>                    
                 </td>
-                <td>
-                    {{ historiaClinica.motivo }}
+                
+                <td class="text-center">
+                    {{ historiaClinica.edadRealizaExamen }} años
                 </td>
                 <td>
                     {{ historiaClinica.od }}
@@ -65,9 +69,8 @@
                 </td>
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
-                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text" pTooltip="Detalle"></button>
-                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" pTooltip="Editar historia clínica"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" pTooltip="Eliminar historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-print" class="p-button-rounded p-button-text" (click)="detalle(historiaClinica)" pTooltip="Imprimir historia clínica"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text" (click)="abrirModalEliminarHistoriaClinica(rowIndex)" pTooltip="Eliminar historia clínica"></button>
                     </div>
                 </td>
 
@@ -87,5 +90,88 @@
         El paciente no tiene historias clínicas registradas!
       </div>
 </div>
+
+<!-- Modal imprimir historia clínica -->
+<p-dialog header="Confirmar" [(visible)]="modalImprimir" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div class="text-center">
+
+        <div class="card box-shadow-sm">
+            <div class="card-header">
+                <h5 style="margin-bottom: 0px;">Imprimir historia clínica</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Edad (en años)</label>
+                        <input class="form-control" type="text" name="edad" [(ngModel)]="historiaClinicaAImprimir.edadRealizaExamen" disabled required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Ocupación</label>
+                        <input class="form-control" type="text" name="ocupacion" [(ngModel)]="historiaClinicaAImprimir.ocupacion" disabled placeholder="Ocupación" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
+                        <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinicaAImprimir.oi" disabled placeholder="RX ojo izquierdo" required>
+                    </div>                
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Ojo derecho </label>
+                        <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinicaAImprimir.od" disabled placeholder="RX ojo derecho" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Antecedentes</label>
+                        <input class="form-control" type="text" name="antecedentes" [(ngModel)]="historiaClinicaAImprimir.antecedentes" disabled placeholder="Antecedentes médicos" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Tipo de lente </label>
+                        <input class="form-control" type="text" name="tipoLente" [(ngModel)]="historiaClinicaAImprimir.tipoLente" disabled placeholder="Tipo de lente" required>
+                    </div>
+    
+                    <div class="col-12 ">
+                        <label for="validationCustom01" class="form-label">Motivo </label>
+                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.motivo" name="motivo" disabled placeholder="Motivo de la consulta" required ></textarea>
+                    </div>
+    
+                    <div class="col-12 ">
+                        <label for="validationCustom01" class="form-label">Observaciones </label>
+                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.observaciones" name="observaciones" disabled placeholder="Observaciones" required ></textarea>
+                    </div>                           
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-print" (click)="imprimirHistoriaClinica()" label="Imprimir"
+            styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="modalImprimir = false" label="Cancelar"
+            styleClass="p-button-danger p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>
+
+<!-- Modal eliminar historia clínica -->
+<p-dialog header="Confirmar" [(visible)]="modalEliminarHistoriaClinica" [modal]="true" [style]="{ width: '50vw' }"
+    [draggable]="false" [resizable]="false">
+    <div class="text-center">
+
+        <div class="mb-5">
+            <img [src]="imgAlerta" alt="Faild" style="width: 90px;">
+        </div>
+
+        <p>¿Realmente deseas eliminar esta historia clínica? <Strong>Este proceso no se puede deshacer.</Strong></p>
+
+    </div>
+
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-check" (click)="eliminarHistoriaClinica()" label="Sí, eliminar"
+            styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="modalEliminarHistoriaClinica = false" label="Cancelar"
+            styleClass="p-button-danger p-button-text"></p-button>
+    </ng-template>
+
+</p-dialog>
+
 
 
