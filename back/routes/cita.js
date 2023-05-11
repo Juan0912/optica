@@ -14,6 +14,8 @@ api.post('/crearCita', citaController.crearCita);
 api.put('/actualizarCita/:id', auth.auth, citaController.actualizarCita);
 // Ruta para obtener todas las citas
 api.get('/listarCitas', auth.auth, citaController.listarCitas);
+// Ruta para obtener una cita por su id.
+api.get('/obtenerCita/:id', auth.auth, citaController.obtenerCita);
 // Ruta para obtener todas las citas del dia actual.
 api.get('/listarCitasDia', auth.auth, citaController.listarCitasDia);
 // Ruta para obtener todas las citas de una fecha en especifico.

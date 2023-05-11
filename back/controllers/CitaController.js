@@ -3,6 +3,7 @@
 // Se declaran variables de controlador.
 const cita = require("../models/cita");
 const jwt = require('../helpers/jwt');
+const moment = require('moment-timezone');
 
 
 // ========================================================== MÉTODOS CONTROLADOR ====================================================
@@ -82,14 +83,10 @@ const listarCitas = async (req, res) => {
 
 const listarCitasDia = async (req, res) => {
 
-    const fechaHoy = new Date();
-    fechaHoy.setHours(0, 0, 0, 0);
+    const fechaHoy = moment().tz('America/Bogota').format('YYYY-MM-DD');
 
     const filtroBusqueda = {
-        fecha: {
-            $gte: fechaHoy,
-            $lt: new Date(fechaHoy.getTime() + 24 * 60 * 60 * 1000),
-        },
+        fecha: fechaHoy,
     };
 
     let listadoCitas = await cita.find(filtroBusqueda);
@@ -105,15 +102,11 @@ const listarCitasDia = async (req, res) => {
 
 const listarCitasPorFecha = async (req, res) => {
 
-    let fecha = req.body.fecha
-    const fechaCita = new Date(fecha);
-    fechaCita.setHours(0, 0, 0, 0);
+    let fechaTmp = req.body.fecha
+    const fechaCita = moment(fechaTmp).tz('America/Bogota').format('YYYY-MM-DD');;
 
     const filtroBusqueda = {
-        fecha: {
-            $gte: fechaCita,
-            $lt: new Date(fechaCita.getTime() + 24 * 60 * 60 * 1000),
-        },
+        fecha: fechaCita
     };
 
     let listadoCitas = await cita.find(filtroBusqueda);
