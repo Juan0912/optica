@@ -7,6 +7,7 @@ import { MenuModule } from 'primeng/menu';
 import { IndexCitasComponent } from "../citas/index-citas/index-citas.component";
 import { FormsModule } from '@angular/forms';
 import { CreateCitaComponent } from './create-cita/create-cita.component';
+import { EditCitaComponent } from './edit-cita/edit-cita.component';
 
 
 
@@ -15,6 +16,7 @@ import { CreateCitaComponent } from './create-cita/create-cita.component';
   declarations: [
     IndexCitasComponent,
     CreateCitaComponent,
+    EditCitaComponent,
   ],
   imports: [
     CommonModule,

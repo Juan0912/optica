@@ -1,0 +1,48 @@
+<!-- Page title-->
+<div class="border-bottom mb-5">
+    <h1 class="mt-2 mt-md-4 mb-3">Consultas</h1>
+    <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+        <p class="text-muted">Este módulo permite editar una consulta en la óptica.</p>
+
+    </div>
+</div>
+
+<form #form="ngForm" (ngSubmit)="actualizarConsulta(form)">
+    <div class="card box-shadow-sm">
+        <div class="card-header">
+            <h5 style="margin-bottom: 0px;">Registro de consulta</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Nombres</label>
+                    <input class="form-control" type="text" name="nombres" [(ngModel)]="consulta.nombres" placeholder="Nombre completo" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Apellidos</label>
+                    <input class="form-control" type="text" name="apellidos" [(ngModel)]="consulta.apellidos" placeholder="Apellidos completos" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Correo electrónico</label>
+                    <input class="form-control" type="text" name="correo" [(ngModel)]="consulta.correo" placeholder="Correo electrónico" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Teléfono</label>
+                    <input class="form-control" type="number" name="telefono" [(ngModel)]="consulta.telefono" placeholder="Teléfono" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">Fecha</label>
+                    <input class="form-control" name="fNacimiento" [(ngModel)]="consulta.fecha" type="date" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">Selecciona una hora:</label> &nbsp;
+                    <input class="form-control" name="hora" [(ngModel)]="consulta.hora" type="time" >
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <button  type="submit" class="btn btn-primary mr-3">Agendar Consulta</button>
+            <button type="button" class="btn btn-warning mr-3" routerLink="/consultas/inicio">Cancelar</button>            
+        </div>
+    </div>
+</form>

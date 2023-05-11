@@ -96,6 +96,11 @@
                         Fecha
                     </div>
                 </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        <span>Opciones</span>
+                    </div>
+                </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-consulta let-rowIndex="rowIndex">
@@ -115,8 +120,14 @@
                 <td class="text-center">
                     <small class="text-muted">
                         <i class=" pi pi-calendar" aria-hidden="true"></i> {{consulta.fecha | date : 'dd/MM/yyyy' }} &nbsp;&nbsp;
-                        <i class="pi pi-clock" aria-hidden="true"></i> {{consulta.hora }} &nbsp;&nbsp;
+                        <i class="pi pi-clock" aria-hidden="true"></i> {{consulta.hora}} &nbsp;&nbsp;
                     </small>                    
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text" [routerLink]="['/consultas/editar', consulta._id]" pTooltip="Editar"></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"  pTooltip="Eliminar"></button>
+                    </div>
                 </td>
 
 
