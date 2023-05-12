@@ -1,5 +1,5 @@
 <!-- Page title-->
-<div class="border-bottom mb-5">
+<div class="border-bottom mb-5 animated fadeIn fast">
     <h1 class="mt-2 mt-md-4 mb-3">Cliente</h1>
     <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
         <p class="text-muted">Este módulo permite editar información personal del cliente en la óptica.</p>
@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<form #form="ngForm" (ngSubmit)="actualizarCliente(form)">
+<form #form="ngForm" (ngSubmit)="actualizarCliente(form)" class="animated fadeIn">
     <div class="card box-shadow-sm">
         <div class="card-header">
             <h5 style="margin-bottom: 0px;">Editar cliente</h5>

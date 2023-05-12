@@ -1,4 +1,4 @@
-<div class="border-bottom mb-5">
+<div class="border-bottom mb-5 animated fadeIn">
     <h1 class="mt-2 mt-md-4 mb-3">Agenda Llamadas</h1>
     <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
         <p class="text-muted">Este módulo permite visualizar los clientes que se realizaron el examen visual hace 350
@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<div class="card">
+<div class="card animated fadeIn">
     <p-table #dt1 [value]="clientes" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros">

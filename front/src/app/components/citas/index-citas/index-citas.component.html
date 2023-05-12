@@ -1,4 +1,4 @@
-<div class="card d-flex justify-content-between" style="flex-direction: row !important;">
+<div class="card d-flex justify-content-between animated fadeIn fast" style="flex-direction: row !important;">
     <h3>Módulo de Consultas</h3>
     <div>
         <p-button label="Agendar Consulta" [routerLink]="['/consultas/registro']" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" 
@@ -6,7 +6,7 @@
     </div>
 </div>
 
-<div class="grid">
+<div class="grid animated fadeIn">
 
     <div class="col-12 lg:col-6 xl:col-4">
         <div class="card mb-0">
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<div class="card" *ngIf="consultas.length >= 1">
+<div class="card animated fadeIn" *ngIf="consultas.length >= 1">
     <p-table #dt1 [value]="consultas" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros">
@@ -141,7 +141,7 @@
     </p-table>
 </div>
 
-<div class="card text-center" *ngIf="consultas.length == 0">
+<div class="card text-center animated fadeIn" *ngIf="consultas.length == 0">
     <div class="alert alert-primary" role="alert">
         No hay consultas programadas.
       </div>
