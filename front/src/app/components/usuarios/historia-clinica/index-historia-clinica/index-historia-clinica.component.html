@@ -1,4 +1,4 @@
-<div class="card d-flex justify-content-between" style="flex-direction: row !important;">
+<div class="card d-flex justify-content-between animated fadeIn" style="flex-direction: row !important;">
     <h3>Historia Clínica <span class="text-muted">/ {{cliente.datos?.nombres}} {{cliente.datos?.apellidos}}</span></h3>
 
     <div>
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="card" *ngIf="historiasClinicas.length > 0">
+<div class="card animated fadeIn" *ngIf="historiasClinicas.length > 0">
     <p-table #dt1 [value]="historiasClinicas" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [loading]="loading" [paginator]="true"
         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros">
