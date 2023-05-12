@@ -12,6 +12,7 @@ const CitaSchema = Schema({
     telefono: { type: String, required: true },
     fecha: { type: String, required: true },
     hora: { type: String, required: true },
+    realizada: { type: Boolean, required: false, default: false },
     createdAt: { type: Date, required: true, default: Date.now },
 });
 

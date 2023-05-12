@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateCitaComponent } from './create-cita/create-cita.component';
 import { EditCitaComponent } from './edit-cita/edit-cita.component';
 import { DialogModule } from 'primeng/dialog';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 
@@ -25,7 +26,8 @@ import { DialogModule } from 'primeng/dialog';
     TableModule,
     FormsModule,
     MenuModule,
-    DialogModule
+    DialogModule,
+    InputSwitchModule
   ]
 })
 export class CitasModule { }

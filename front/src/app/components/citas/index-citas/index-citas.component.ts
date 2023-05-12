@@ -82,6 +82,12 @@ export class IndexCitasComponent implements OnInit {
     this.modalEliminarCita = false;
   }
 
+  changeState(id: string) {
+    this._requestService.get(`actualizarConsultaRealizada/${id}`).subscribe((resp) => {
+
+    });
+  }
+
 
 
 }

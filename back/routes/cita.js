@@ -22,6 +22,8 @@ api.get('/listarCitasDia', auth.auth, citaController.listarCitasDia);
 api.post('/listarCitasPorFecha', auth.auth, citaController.listarCitasPorFecha);
 // Ruta para eliminar una cita.
 api.delete('/eliminarCita/:id', citaController.eliminarCita);
+// Ruta para actualizar estado consulta realziada.
+api.get('/actualizarConsultaRealizada/:id', auth.auth, citaController.actualizarConsultaRealizada);
 
 
 

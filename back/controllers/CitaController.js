@@ -138,6 +138,25 @@ const eliminarCita = async (req, res) => {
 
 }
 
+const actualizarConsultaRealizada = async (req, res) => {
+
+    const idCita = req.params.id;
+
+    const citaEncontrada = await cita.findById({ _id: idCita });
+
+    const citaActualizada = await cita.findOneAndUpdate({ _id: idCita }, {
+        realizada: !citaEncontrada.realizada
+    });
+
+
+    res.status(200).send({
+        datos: citaActualizada,
+        resultadoExitoso: true,
+        mensaje: 'Operación existosa!'
+    });
+
+}
+
 
 
 
@@ -151,6 +170,6 @@ module.exports = {
     listarCitas,
     eliminarCita,
     listarCitasDia,
-    listarCitasPorFecha
-
+    listarCitasPorFecha,
+    actualizarConsultaRealizada
 }

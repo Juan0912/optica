@@ -98,6 +98,12 @@
                         <span>Opciones</span>
                     </div>
                 </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        <span>Consulta realizada</span>
+                    </div>
+                </th>
+                
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-consulta let-rowIndex="rowIndex">
@@ -129,7 +135,12 @@
                             (click)="abrirModalEliminarCita(consulta)" pTooltip="Eliminar"></button>
                     </div>
                 </td>
-
+                <td>
+                    <div class="flex justify-content-center">
+                        <p-inputSwitch [(ngModel)]="consulta.realizada"
+                            (ngModelChange)="changeState(consulta._id)"></p-inputSwitch>
+                    </div>
+                </td>
 
             </tr>
         </ng-template>
