@@ -15,6 +15,7 @@ import { MessageService } from 'primeng/api';
 import { SharedsModule } from "./components/shareds/shareds.module";
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptor/token.interceptor';
+import { ComponentsModule } from './components/components.module';
 
 
 
@@ -31,7 +32,8 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     imports: [
         AppRoutingModule,
         AppLayoutModule,
-        SharedsModule
+        SharedsModule,
+        ComponentsModule
     ],
 })
 export class AppModule { }

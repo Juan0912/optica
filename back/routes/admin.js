@@ -11,6 +11,10 @@ const api = express.Router();
 api.post('/registroAdmin', adminController.registroAdmin);
 // Ruta para el inicio de sesion de los administradores.
 api.post('/loginAdmin', adminController.loginAdmin);
+// Ruta para obtener kpis.
+api.get('/kpiConsultasPorMes', [auth.auth], adminController.kpiConsultasPorMes);
+
+
 
 // Se exporta modulo.
 module.exports = api;

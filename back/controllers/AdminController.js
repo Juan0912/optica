@@ -2,6 +2,7 @@
 
 // Se declaran variables de controlador.
 const admin = require("../models/admin");
+const cliente = require("../models/cliente");
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('../helpers/jwt');
 
@@ -69,10 +70,97 @@ const loginAdmin = async (req, res) => {
     }
 }
 
+const kpiConsultasPorMes = async (req, res) => {
+
+    let kpi = {
+        pasado: {
+            enero: 0,
+            febrero: 0,
+            marzo: 0,
+            abril: 0,
+            mayo: 0,
+            junio: 0,
+            julio: 0,
+            agosto: 0,
+            septiembre: 0,
+            octubre: 0,
+            noviembre: 0,
+            diciembre: 0
+        },
+        actual: {
+            enero: 0,
+            febrero: 0,
+            marzo: 0,
+            abril: 0,
+            mayo: 0,
+            junio: 0,
+            julio: 0,
+            agosto: 0,
+            septiembre: 0,
+            octubre: 0,
+            noviembre: 0,
+            diciembre: 0
+        }
+    }
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const passYear = currentDate.getFullYear() - 1;
+
+    const clientes = await cliente.find();
+
+    for (const clienteItem of clientes) {
+        for (const historia of clienteItem.historiaClinica) {
+            let createdAtDate = new Date(historia.createdAt);
+            const mes = createdAtDate.getMonth() + 1;
+            if (currentYear == createdAtDate.getFullYear()) {
+                if (mes == 1) kpi.actual.enero++;
+                if (mes == 2) kpi.actual.febrero++;
+                if (mes == 3) kpi.actual.marzo++;
+                if (mes == 4) kpi.actual.abril++;
+                if (mes == 5) kpi.actual.mayo++;
+                if (mes == 6) kpi.actual.junio++;
+                if (mes == 7) kpi.actual.julio++;
+                if (mes == 8) kpi.actual.agosto++;
+                if (mes == 9) kpi.actual.septiembre++;
+                if (mes == 10) kpi.actual.octubre++;
+                if (mes == 11) kpi.actual.noviembre++;
+                if (mes == 12) kpi.actual.diciembre ++;
+            }
+            if (passYear == createdAtDate.getFullYear() ) {
+                if (mes == 1) kpi.pasado.enero++;
+                if (mes == 2) kpi.pasado.febrero++;
+                if (mes == 3) kpi.pasado.marzo++;
+                if (mes == 4) kpi.pasado.abril++;
+                if (mes == 5) kpi.pasado.mayo++;
+                if (mes == 6) kpi.pasado.junio++;
+                if (mes == 7) kpi.pasado.julio++;
+                if (mes == 8) kpi.pasado.agosto++;
+                if (mes == 9) kpi.pasado.septiembre++;
+                if (mes == 10) kpi.pasado.octubre++;
+                if (mes == 11) kpi.pasado.noviembre++;
+                if (mes == 12) kpi.pasado.diciembre++;
+            }
+        }
+    }
+
+    res.status(200).send({
+        datos: {
+           kpi
+        },
+        resultadoExitoso: true,
+        mensaje: 'Operación existosa!'
+    });
+
+
+
+}
+
 
 
 // Se exportan todas las funcionalidades.
 module.exports = {
     registroAdmin,
     loginAdmin,
+    kpiConsultasPorMes
 }

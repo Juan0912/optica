@@ -11,11 +11,11 @@ declare var $: any;
   templateUrl: './index-citas.component.html',
   styleUrls: ['./index-citas.component.scss']
 })
-export class IndexCitasComponent implements OnInit{
+export class IndexCitasComponent implements OnInit {
 
-  selectedDate : Date = new Date;
-  consultas : any = [];
-  dateSelectedFilter : string = '';
+  selectedDate: Date = new Date;
+  consultas: any = [];
+  dateSelectedFilter: string = '';
 
   modalEliminarCita: boolean = false;
   cosultaSelected: any = {};
@@ -27,8 +27,8 @@ export class IndexCitasComponent implements OnInit{
   public statuses!: any[];
 
   constructor(private _consultaService: ConsultaService,
-              private _requestService: RequestsService,
-              private _messageService: MessageService){
+    private _requestService: RequestsService,
+    private _messageService: MessageService) {
 
   }
 
@@ -43,37 +43,41 @@ export class IndexCitasComponent implements OnInit{
     // Función que se ejecutará cada vez que cambie la fecha
     this.dateSelectedFilter = event;
 
-    this._requestService.post('listarCitasPorFecha', {fecha: this.dateSelectedFilter}).subscribe(resp => {
+    this._requestService.post('listarCitasPorFecha', { fecha: this.dateSelectedFilter }).subscribe(resp => {
       this.consultas = resp.datos;
     });
 
   }
 
-  listarTodasCitas(){
+  listarTodasCitas() {
+    $('.preloader').show();
     this._consultaService.listarTodasCitas().subscribe(resp => {
-      this.consultas = resp.datos;     
+      $('.preloader').hide();
+      this.consultas = resp.datos;
     });
   }
 
-  listarCitasDia(){
+  listarCitasDia() {
+    $('.preloader').show();
     this._consultaService.listarCitasDia().subscribe(resp => {
-      this.consultas = resp.datos;     
+      $('.preloader').hide();
+      this.consultas = resp.datos;
     });
-  }  
+  }
 
-  limpiarTabla(){
+  limpiarTabla() {
     this.consultas.length = 0;
   }
 
-  abrirModalEliminarCita(cita: any){
+  abrirModalEliminarCita(cita: any) {
     this.modalEliminarCita = true;
     this.cosultaSelected = cita;
   }
 
-  eliminarCita(){
+  eliminarCita() {
     this._requestService.delete(`eliminarCita/${this.cosultaSelected._id}`).subscribe(resp => {
-      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Consulta eliminada de la agenda con éxito!' });  
-      this.listarTodasCitas();   
+      this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Consulta eliminada de la agenda con éxito!' });
+      this.listarTodasCitas();
     });
     this.modalEliminarCita = false;
   }

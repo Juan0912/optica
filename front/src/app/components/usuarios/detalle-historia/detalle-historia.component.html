@@ -1,0 +1,51 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-2 text-center">
+            <img src="assets/images/logo.jpg" alt="imagen optica" class="img-thumbnail">
+        </div>
+        <div class="col-10">
+            <h2 class="text-center mt-8">
+                Historia Clínica / <span class="text-muted">{{cliente?.datos?.nombres}} {{cliente?.datos?.apellidos}}</span>
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="container mt-8">
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <label for="validationCustom01" class="form-label font-weight-bold">Edad (en años)</label>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.edadRealizaExamen}}</p>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="validationCustom01" class="form-label font-weight-bold">Ocupación</label>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.ocupacion}}</p>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="validationCustom01" class="form-label font-weight-bold">Ojo izquierdo </label>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.oi}}</p>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="validationCustom01" class="form-label font-weight-bold">Ojo derecho </label>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.od}}</p>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="validationCustom01" class="form-label font-weight-bold">Antecedentes</label>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.antecedentes}}</p>
+        </div>
+        <div class="col-md-6 form-group">
+            <label for="validationCustom01" class="form-label font-weight-bold">Tipo de lente </label>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.tipoLente}}</p>
+        </div>
+    
+        <div class="col-12 ">
+            <p class="font-weight-bold text-center">Motivo </p>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.motivo}}</p>
+        </div>
+    
+        <div class="col-12 ">
+            <p class="font-weight-bold text-center">Observaciones </p>
+            <p style="border: 1px solid rgba(0, 0, 0, 0.199); padding: 5px; border-radius: 5px;">{{historiaClinicaAImprimir.observaciones}}</p>
+        </div>
+    </div>
+</div>

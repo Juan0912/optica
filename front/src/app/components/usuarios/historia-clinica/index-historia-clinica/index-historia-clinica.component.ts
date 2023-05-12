@@ -4,6 +4,7 @@ import { ClienteService } from '../../../../services/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { jsPDF } from 'jspdf';
+import { environment } from 'src/environments/environment';
 require('jspdf-autotable');
 
 
@@ -82,10 +83,9 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
   }
 
   imprimirHistoriaClinica() {
-    console.log(this.historiaClinicaAImprimir);
-    // window.print();
-    this.exportPDF();
+    localStorage.setItem('detalleHistoriaClinica', JSON.stringify(this.historiaClinicaAImprimir));
     this.modalImprimir = false;
+    window.open(`${environment.urlFront}detalle-historia-clinica`, '_blank');
   }
 
   exportPDF() {

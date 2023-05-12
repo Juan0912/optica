@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   nameSite: 'Óptica Kristal',
   url: 'http://localhost:4201/api/',
+  urlFront: 'http://localhost:4200/#/',
 };
 
 /*

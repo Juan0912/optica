@@ -4,6 +4,7 @@ import { Product } from '../../api/product';
 import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -19,15 +20,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
     chartOptions: any;
 
     subscription!: Subscription;
+    kpi: any = {};
 
-    constructor(private productService: ProductService, public layoutService: LayoutService) {
+    constructor(private productService: ProductService, public layoutService: LayoutService, private _requestService: RequestsService) {
         this.subscription = this.layoutService.configUpdate$.subscribe(() => {
-            this.initChart();
+            // this.initChart();
         });
     }
 
     ngOnInit() {
-        this.initChart();
+        this._requestService.get('kpiConsultasPorMes').subscribe((res: any) => {
+            this.kpi = res.datos.kpi;
+            this.initChart();
+        })
         this.productService.getProductsSmall().then(data => this.products = data);
 
         this.items = [
@@ -43,19 +48,45 @@ export class DashboardComponent implements OnInit, OnDestroy {
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
         this.chartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
             datasets: [
                 {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    label: 'Año pasado',
+                    data: [
+                        this.kpi.pasado.enero,
+                        this.kpi.pasado.febrero,
+                        this.kpi.pasado.marzo,
+                        this.kpi.pasado.abril,
+                        this.kpi.pasado.mayo,
+                        this.kpi.pasado.junio,
+                        this.kpi.pasado.julio,
+                        this.kpi.pasado.agosto,
+                        this.kpi.pasado.septiembre,
+                        this.kpi.pasado.octubre,
+                        this.kpi.pasado.noviembre,
+                        this.kpi.pasado.diciembre
+                    ],
                     fill: false,
                     backgroundColor: documentStyle.getPropertyValue('--bluegray-700'),
                     borderColor: documentStyle.getPropertyValue('--bluegray-700'),
                     tension: .4
                 },
                 {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
+                    label: 'Año actual',
+                    data: [
+                        this.kpi.actual.enero,
+                        this.kpi.actual.febrero,
+                        this.kpi.actual.marzo,
+                        this.kpi.actual.abril,
+                        this.kpi.actual.mayo,
+                        this.kpi.actual.junio,
+                        this.kpi.actual.julio,
+                        this.kpi.actual.agosto,
+                        this.kpi.actual.septiembre,
+                        this.kpi.actual.octubre,
+                        this.kpi.actual.noviembre,
+                        this.kpi.actual.diciembre,
+                    ],
                     fill: false,
                     backgroundColor: documentStyle.getPropertyValue('--green-600'),
                     borderColor: documentStyle.getPropertyValue('--green-600'),

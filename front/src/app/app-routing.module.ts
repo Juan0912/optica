@@ -4,6 +4,7 @@ import { NotfoundComponent } from './demo/components/notfound/notfound.component
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { ComponentsModule } from './components/components.module';
 import { AdminGuard } from './guards/admin.guard';
+import { DetalleHistoriaComponent } from './components/usuarios/detalle-historia/detalle-historia.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { AdminGuard } from './guards/admin.guard';
             },
             { path: 'autenticacion', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'notfound', component: NotfoundComponent },
+            { path: 'detalle-historia-clinica', component: DetalleHistoriaComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
     ],

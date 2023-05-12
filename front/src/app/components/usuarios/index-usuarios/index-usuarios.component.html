@@ -42,23 +42,7 @@
                             [showOperator]="false"></p-columnFilter>
                     </div>
                 </th>
-
-                <th style="min-width:5rem">
-                    <div class="flex align-items-center">
-                        Estado
-                        <p-columnFilter field="estadoCuenta" matchMode="equals" display="menu" [showAddButton]="false"
-                            [showMatchModes]="false" [showOperator]="false">
-                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
-                                    placeholder="Cualquiera">
-                                    <ng-template let-option pTemplate="item">
-                                        <p-tag [value]="option.value" [severity]="getSeverity(option.label)"></p-tag>
-                                    </ng-template>
-                                </p-dropdown>
-                            </ng-template>
-                        </p-columnFilter>
-                    </div>
-                </th>
+               
                 <th style="min-width:10rem">
                     <div class="flex justify-content-center align-items-center">
                         <span>Opciones</span>
@@ -80,9 +64,7 @@
                 <td>
                     {{ cliente.fNacimiento | date: 'dd/MM/yyyy' }}
                 </td>
-                <td>
-                    <p-tag [value]="cliente.estadoCuenta" [severity]="getSeverity(cliente.estadoCuenta)"></p-tag>
-                </td>
+             
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
                         <button pButton pRipple type="button" icon="pi pi-book" class="p-button-rounded p-button-text" [routerLink]="['/usuarios/historia-clinica/inicio', cliente._id]" pTooltip="Historia clínica"></button>

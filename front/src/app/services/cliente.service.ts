@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ClienteService {
   url: string = '';
+  clienteSelected: any = {};
 
   constructor(
     private _http: HttpClient

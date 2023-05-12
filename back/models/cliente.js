@@ -13,8 +13,6 @@ const ClienteSchema = Schema({
     fNacimiento: { type: String, required: false },
     identificacion: { type: String, required: false },
     tipoDocumento: { type: String, required: false },
-    estadoCuenta: { type: String, required: false, default: 'Al día' },
-    valorCuenta: { type: Number, required: false },
     llamado: { type: Boolean, required: false, default: false },
     historiaClinica: [{ type: Object, required: false }],
     correo: { type: String, required: false },

@@ -20,6 +20,7 @@ import { CreateUsuarioComponent } from './create-usuario/create-usuario.componen
 import { EditUsuarioComponent } from './edit-usuario/edit-usuario.component';
 import { IndexHistoriaClinicaComponent } from './historia-clinica/index-historia-clinica/index-historia-clinica.component';
 import { CreateHistoriaClinicaComponent } from './historia-clinica/create-historia-clinica/create-historia-clinica.component';
+import { DetalleHistoriaComponent } from './detalle-historia/detalle-historia.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CreateHistoriaClinicaComponent } from './historia-clinica/create-histor
     EditUsuarioComponent,
     IndexHistoriaClinicaComponent,
     CreateHistoriaClinicaComponent,
+    DetalleHistoriaComponent,
   ],
   imports: [
     FormsModule,

@@ -21,6 +21,8 @@ const registroCliente = async (req, res) => {
     if (listadoClientes.length === 0) {
 
         // Se registra el cliente
+        data.nombres = data.nombres.toUpperCase();
+        data.apellidos = data.apellidos.toUpperCase();
         const reg = await cliente.create(data);
         res.status(200).send({
             datos: true,
@@ -83,15 +85,13 @@ const actualizarCliente = async (req, res) => {
 
     // Se valida existencia del usuario.
     let elementoActualizado = await cliente.findOneAndUpdate({ _id: idCliente }, {
-        nombres: data.nombres,
-        apellidos: data.apellidos,
+        nombres: data.nombres.toUpperCase(),
+        apellidos: data.apellidos.toUpperCase(),
         telefono: data.telefono,
         genero: data.genero,
         fNacimiento: data.fNacimiento,
         identificacion: data.identificacion,
         tipoDocumento: data.tipoDocumento,
-        estadoCuenta: data.estadoCuenta,
-        valorCuenta: data.valorCuenta,
         historiaClinica: data.historiaClinica,
         correo: data.correo
     });
