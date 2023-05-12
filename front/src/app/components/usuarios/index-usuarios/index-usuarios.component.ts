@@ -43,8 +43,8 @@ export class IndexUsuariosComponent implements OnInit {
     this.loadUsers();
     this.loadConfig()
     this.matchModeOptions = [
-      { label: 'Igual', value: FilterMatchMode.EQUALS },
-      { label: 'Contiene', value: FilterMatchMode.CONTAINS }
+      { label: 'Contiene', value: FilterMatchMode.CONTAINS },
+      { label: 'Igual', value: FilterMatchMode.EQUALS }
     ];
   }
 
