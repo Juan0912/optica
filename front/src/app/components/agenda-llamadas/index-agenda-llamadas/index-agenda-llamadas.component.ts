@@ -35,10 +35,7 @@ export class IndexAgendaLlamadasComponent implements OnInit {
 
   initData() {
     this._clienteService.listarClientesAgendaLlamada().subscribe(resp => {
-      console.log(resp);
-
       this.clientes = resp.datos;
-
     });
   }
 
