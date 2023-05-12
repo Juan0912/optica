@@ -168,6 +168,26 @@ const eliminarCliente = async (req, res) => {
 
 }
 
+const actualizarLlamadoCliente = async (req, res) => {
+
+    const idCliente = req.params.id;
+
+
+    const clienteEncontrado = await cliente.findById({ _id: idCliente });
+
+    const clienteActualizado = await cliente.findOneAndUpdate({ _id: idCliente }, {
+        llamado: !clienteEncontrado.llamado
+    });
+
+
+    res.status(200).send({
+        datos: clienteActualizado,
+        resultadoExitoso: true,
+        mensaje: 'Operación existosa!'
+    });
+
+}
+
 
 
 
@@ -181,6 +201,7 @@ module.exports = {
     actualizarCliente,
     eliminarCliente,
     obtenerCliente,
-    obtenerClientesALlamar
+    obtenerClientesALlamar,
+    actualizarLlamadoCliente
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { log } from 'console';
 import { FilterMatchMode, SelectItem } from 'primeng/api';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-index-agenda-llamadas',
@@ -10,15 +11,17 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class IndexAgendaLlamadasComponent implements OnInit {
 
-  clientes : any = [];
+  clientes: any = [];
+  cliente: any = {};
   public loading: boolean = false;
 
   public matchModeOptions: SelectItem[] = [];
 
 
   constructor(
-    private _clienteService: ClienteService
-  ){
+    private _clienteService: ClienteService,
+    private _requestService: RequestsService
+  ) {
 
   }
 
@@ -30,12 +33,18 @@ export class IndexAgendaLlamadasComponent implements OnInit {
     this.initData();
   }
 
-  initData(){
+  initData() {
     this._clienteService.listarClientesAgendaLlamada().subscribe(resp => {
       console.log(resp);
-      
+
       this.clientes = resp.datos;
-      
+
+    });
+  }
+
+  changeState(id: string) {
+    this._requestService.get(`actualizarLlamadoCliente/${id}`).subscribe((resp) => {
+
     });
   }
 

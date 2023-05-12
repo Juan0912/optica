@@ -22,6 +22,10 @@ api.put('/actualizarCliente/:id', clienteController.actualizarCliente);
 api.delete('/eliminarCliente/:id', clienteController.eliminarCliente);
 // Ruta para obtener todas los usuarios a llamar.
 api.get('/obtenerClientesALlamar', auth.auth, clienteController.obtenerClientesALlamar);
+// Ruta para actualizar estado llamado del cliente.
+api.get('/actualizarLlamadoCliente/:id', auth.auth, clienteController.actualizarLlamadoCliente);
+
+
 
 
 

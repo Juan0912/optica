@@ -1,7 +1,8 @@
 <div class="border-bottom mb-5">
     <h1 class="mt-2 mt-md-4 mb-3">Agenda Llamadas</h1>
     <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-        <p class="text-muted">Este módulo permite visualizar los clientes que se realizaron el examen visual hace 350 días.</p>
+        <p class="text-muted">Este módulo permite visualizar los clientes que se realizaron el examen visual hace 350
+            días.</p>
 
     </div>
 </div>
@@ -26,17 +27,17 @@
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
                         Número de Identificación
-                        </div>
+                    </div>
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
                         Número de celular
-                        </div>
+                    </div>
                 </th>
 
                 <th style="min-width:10rem">
                     <div class="flex justify-content-center align-items-center">
-                        <span>Opciones</span>
+                        <span>Llamado</span>
                     </div>
                 </th>
             </tr>
@@ -56,11 +57,9 @@
                     {{ cliente.telefono}}
                 </td>
                 <td>
-                    <div class="flex align-items-center justify-content-center gap-2">
-                        <button pButton pRipple type="button" icon="pi pi-book" class="p-button-rounded p-button-text"  pTooltip="Historia clínica"></button>
-                        <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"  pTooltip="Detalle"></button>
-                        <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-text"  pTooltip="Editar cliente"></button>
-                        <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"  pTooltip="Eliminar cliente"></button>
+                    <div class="flex justify-content-center">
+                        <p-inputSwitch [(ngModel)]="cliente.llamado"
+                            (ngModelChange)="changeState(cliente._id)"></p-inputSwitch>
                     </div>
                 </td>
 
@@ -74,4 +73,3 @@
         </ng-template>
     </p-table>
 </div>
-

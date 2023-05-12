@@ -15,7 +15,8 @@ const ClienteSchema = Schema({
     tipoDocumento: { type: String, required: false },
     estadoCuenta: { type: String, required: false, default: 'Al día' },
     valorCuenta: { type: Number, required: false },
-    historiaClinica: [{type: Object, required: false}],
+    llamado: { type: Boolean, required: false, default: false },
+    historiaClinica: [{ type: Object, required: false }],
     correo: { type: String, required: false },
     createdAt: { type: Date, required: true, default: Date.now },
 });
