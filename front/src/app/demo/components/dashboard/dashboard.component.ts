@@ -5,6 +5,8 @@ import { ProductService } from '../../service/product.service';
 import { Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { RequestsService } from 'src/app/services/requests.service';
+import * as moment from 'moment-timezone';
+import 'moment/locale/es';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -21,16 +23,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     subscription!: Subscription;
     kpi: any = {};
+    fechaActual: string = '';
+    mesActual: string = '';
 
     constructor(private productService: ProductService, public layoutService: LayoutService, private _requestService: RequestsService) {
         this.subscription = this.layoutService.configUpdate$.subscribe(() => {
-            // this.initChart();
+            this.initChart();
         });
     }
 
     ngOnInit() {
+       
         this._requestService.get('kpiConsultasPorMes').subscribe((res: any) => {
             this.kpi = res.datos.kpi;
+            moment.locale('es');
+            this.fechaActual = moment().tz('America/Bogota').format("LL");
+            this.mesActual = `${moment().tz('America/Bogota').format('MMMM')} del ${moment().tz('America/Bogota').format('YYYY')}`;
             this.initChart();
         })
         this.productService.getProductsSmall().then(data => this.products = data);

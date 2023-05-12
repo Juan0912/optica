@@ -5,6 +5,7 @@ const admin = require("../models/admin");
 const cliente = require("../models/cliente");
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('../helpers/jwt');
+const moment = require('moment-timezone')
 
 
 // ========================================================== MÉTODOS CONTROLADOR ====================================================
@@ -100,10 +101,14 @@ const kpiConsultasPorMes = async (req, res) => {
             octubre: 0,
             noviembre: 0,
             diciembre: 0
-        }
+        },
+        consultasDia: 0,
+        consultasMes: 0
     }
 
     const currentDate = new Date();
+    const currentDateMes = currentDate.getMonth() + 1;
+    const currentDateDay = moment().tz('America/Bogota').format("DD");
     const currentYear = currentDate.getFullYear();
     const passYear = currentDate.getFullYear() - 1;
 
@@ -113,6 +118,7 @@ const kpiConsultasPorMes = async (req, res) => {
         for (const historia of clienteItem.historiaClinica) {
             let createdAtDate = new Date(historia.createdAt);
             const mes = createdAtDate.getMonth() + 1;
+            const day = moment(createdAtDate).format('DD');
             if (currentYear == createdAtDate.getFullYear()) {
                 if (mes == 1) kpi.actual.enero++;
                 if (mes == 2) kpi.actual.febrero++;
@@ -141,6 +147,9 @@ const kpiConsultasPorMes = async (req, res) => {
                 if (mes == 11) kpi.pasado.noviembre++;
                 if (mes == 12) kpi.pasado.diciembre++;
             }
+
+            if(mes == currentDateMes && currentYear == createdAtDate.getFullYear()) kpi.consultasMes++;
+            if(day == currentDateDay && currentYear == createdAtDate.getFullYear() && mes == currentDateMes) kpi.consultasDia++;
         }
     }
 
