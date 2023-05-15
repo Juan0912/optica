@@ -38,13 +38,15 @@ export class CreateHistoriaClinicaComponent {
 
       this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
         this.cliente = resp.datos;
-        this.historiaClinica.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
-        this.historiaClinica.edadRealizaExamen = this.edad;
 
+        if(this.historiaClinica.createdAt == null){
+          this.historiaClinica.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+        }
+
+        this.historiaClinica.edadRealizaExamen = this.edad;
         this.historiaClinica.motivo = this.historiaClinica.motivo.toUpperCase();
         this.historiaClinica.ocupacion = this.historiaClinica.ocupacion.toUpperCase();
         this.historiaClinica.antecedentes = this.historiaClinica.antecedentes.toUpperCase();
-        this.historiaClinica.tipoLente = this.historiaClinica.tipoLente.toUpperCase();
         this.historiaClinica.observaciones = this.historiaClinica.observaciones.toUpperCase();
         
         this.cliente.historiaClinica.unshift(this.historiaClinica);

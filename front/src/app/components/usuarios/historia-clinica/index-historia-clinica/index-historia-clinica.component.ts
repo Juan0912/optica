@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { jsPDF } from 'jspdf';
 import { environment } from 'src/environments/environment';
+import { log } from 'console';
 require('jspdf-autotable');
 
 
@@ -67,7 +68,8 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
         this.historiasClinicas = resp.datos.historiaClinica;
         this.cliente = localStorage.getItem('cliente');
         this.cliente = JSON.parse(this.cliente);
-
+        console.log(this.historiasClinicas);
+        
       }
 
     });
