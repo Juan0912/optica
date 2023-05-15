@@ -5,7 +5,7 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FormsModule } from '@angular/forms';
-
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     TooltipModule,
     InputSwitchModule,
-    FormsModule
+    FormsModule,
+    DropdownModule,
 
   ]
 })

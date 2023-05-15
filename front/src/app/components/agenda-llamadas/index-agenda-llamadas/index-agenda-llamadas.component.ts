@@ -13,6 +13,7 @@ export class IndexAgendaLlamadasComponent implements OnInit {
 
   clientes: any = [];
   cliente: any = {};
+  rangoSelected: any = 0;
   public loading: boolean = false;
 
   public matchModeOptions: SelectItem[] = [];
@@ -34,7 +35,7 @@ export class IndexAgendaLlamadasComponent implements OnInit {
   }
 
   initData() {
-    this._clienteService.listarClientesAgendaLlamada().subscribe(resp => {
+    this._requestService.get(`obtenerClientesALlamar?dias=0`).subscribe(resp => {
       this.clientes = resp.datos;
     });
   }
@@ -42,6 +43,12 @@ export class IndexAgendaLlamadasComponent implements OnInit {
   changeState(id: string) {
     this._requestService.get(`actualizarLlamadoCliente/${id}`).subscribe((resp) => {
 
+    });
+  }
+
+  handleFecha() {
+    this._requestService.get(`obtenerClientesALlamar?dias=${parseInt(this.rangoSelected)}`).subscribe(resp => {
+      this.clientes = resp.datos;
     });
   }
 

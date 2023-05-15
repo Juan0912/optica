@@ -1,9 +1,24 @@
 <div class="border-bottom mb-5 animated fadeIn">
     <h1 class="mt-2 mt-md-4 mb-3">Agenda Llamadas</h1>
     <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-        <p class="text-muted">Este módulo permite visualizar los clientes que se realizaron el examen visual hace 350
-            días.</p>
+        <p class="text-muted">Este módulo permite visualizar los clientes que se realizaron el examen visual hace un año, seis meses, tres meses, dos meses, un mes y una semana</p>
 
+    </div>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="col-6 text-center">
+        <div class="form-group">
+            <h4>Búsqueda por rango de fechas</h4>
+            <select class="form-control" id="inputFecha" [(ngModel)]="rangoSelected" (change)="handleFecha()">
+                <option value="0">-- Hoy --</option>
+                <option value="365">Un año</option>
+                <option value="180">Seis meses</option>
+                <option value="90">Tres meses</option>
+                <option value="60">Dos meses</option>
+                <option value="30">Un mes</option>
+                <option value="7">Una semana</option>
+            </select>
+        </div>
     </div>
 </div>
 
