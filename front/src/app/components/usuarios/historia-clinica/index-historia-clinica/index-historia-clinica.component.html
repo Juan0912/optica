@@ -109,54 +109,176 @@
             <div class="card-header">
                 <h5 style="margin-bottom: 0px;">Imprimir historia clínica</h5>
             </div>
+
             <div class="card-body">
                 <div class="row">
+    
+                    <div class="col-12 ">
+                        <label for="validationCustom01" class="form-label">Motivo </label>
+                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.motivo" name="motivo" placeholder="Motivo de la consulta" disabled ></textarea>
+                    </div>
+    
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Edad (en años)</label>
-                        <input class="form-control" type="text" name="edad"
-                            [(ngModel)]="historiaClinicaAImprimir.edadRealizaExamen" disabled required>
+                        <input class="form-control" type="text" name="edad" [value]="historiaClinicaAImprimir.edadRealizaExamen" [(ngModel)]="historiaClinicaAImprimir.edad" disabled disabled>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Ocupación</label>
-                        <input class="form-control" type="text" name="ocupacion"
-                            [(ngModel)]="historiaClinicaAImprimir.ocupacion" disabled placeholder="Ocupación" required>
+                        <input class="form-control" type="text" name="ocupacion" [(ngModel)]="historiaClinicaAImprimir.ocupacion" placeholder="Ocupación" disabled>
+                    </div>
+    
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Antecedentes</label>
+                        <input class="form-control" type="text" name="antecedentes" [(ngModel)]="historiaClinicaAImprimir.antecedentes" placeholder="Antecedentes médicos" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Fecha de creación</label>
+                        <input class="form-control" name="fNacimiento" [(ngModel)]="historiaClinicaAImprimir.createdAt" type="text" disabled>
+                    </div>             
+                    
+                </div>
+            </div>
+    
+            <div class="card-header text-center">
+                <h5 style="margin-bottom: 0px;">RX EN USO</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+    
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">OD</label>
+                        <input class="form-control" type="text" name="odUso" [(ngModel)]="historiaClinicaAImprimir.odUso" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">A.V.</label>
+                        <input class="form-control" type="text" name="odAVUso" [(ngModel)]="historiaClinicaAImprimir.odAVUso" placeholder="Agudeza visual ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">OI</label>
+                        <input class="form-control" type="text" name="oiUso" [(ngModel)]="historiaClinicaAImprimir.oiUso" placeholder="RX ojo izquierdo" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">A.V.</label>
+                        <input class="form-control" type="text" name="oiAVUso" [(ngModel)]="historiaClinicaAImprimir.oiAVUso" placeholder="Agudeza visual ojo izquierdo" disabled>
+                    </div>                
+                    
+                </div>
+            </div>
+    
+            <div class="card-header text-center">
+                <h5 style="margin-bottom: 0px;">A.V. (SC)</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+    
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">OD</label>
+                        <input class="form-control" type="text" name="odAVSC" [(ngModel)]="historiaClinicaAImprimir.odAVSC" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">OI</label>
+                        <input class="form-control" type="text" name="oiAVSC" [(ngModel)]="historiaClinicaAImprimir.oiAVSC" placeholder="RX ojo izquierdo" disabled>
+                    </div>               
+                              
+                </div>
+            </div>
+    
+            <div class="card-header text-center">
+                <h5 style="margin-bottom: 0px;">BIOMICROSCOPIA</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+    
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">OD</label>
+                        <input class="form-control" type="text" name="odBio" [(ngModel)]="historiaClinicaAImprimir.odBio" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">OI</label>
+                        <input class="form-control" type="text" name="oiBio" [(ngModel)]="historiaClinicaAImprimir.oiBio" placeholder="RX ojo izquierdo" disabled>
+                    </div>               
+                              
+                </div>
+            </div>
+    
+            <div class="card-header text-center">
+                <h5 style="margin-bottom: 0px;">FONDO DE OJO</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+    
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">OD</label>
+                        <input class="form-control" type="text" name="odFondo" [(ngModel)]="historiaClinicaAImprimir.odFondo" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">OI</label>
+                        <input class="form-control" type="text" name="oiFondo" [(ngModel)]="historiaClinicaAImprimir.oiFondo" placeholder="RX ojo izquierdo" disabled>
+                    </div>               
+                             
+                </div>
+            </div>
+    
+            <div class="card-header text-center">
+                <h5 style="margin-bottom: 0px;">RX FINAL</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+    
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">OD</label>
+                        <input class="form-control" type="text" name="odFinal" [(ngModel)]="historiaClinicaAImprimir.odFinal" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">A.V.</label>
+                        <input class="form-control" type="text" name="odAVF" [(ngModel)]="historiaClinicaAImprimir.odAVF" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
+                        <input class="form-control" type="text" name="oiFinal" [(ngModel)]="historiaClinicaAImprimir.oiFinal" placeholder="RX ojo izquierdo" disabled>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="validationCustom01" class="form-label">A.V. </label>
+                        <input class="form-control" type="text" name="odAVF" [(ngModel)]="historiaClinicaAImprimir.odAVF" placeholder="RX ojo derecho" disabled>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <label for="validationCustom01" class="form-label">D.P </label>
+                        <input class="form-control" type="text" name="dp" [(ngModel)]="historiaClinicaAImprimir.dp" placeholder="Distancia pupilar" disabled>
+                    </div>               
+                             
+                </div>
+            </div>
+    
+            <div class="card-header text-center">
+                <h5 style="margin-bottom: 0px;">DIAGNOSTICO FINAL</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+    
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Ojo derecho </label>
+                        <input class="form-control" type="text" name="odDx" [(ngModel)]="historiaClinicaAImprimir.odDx" placeholder="RX ojo derecho" disabled>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                        <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinicaAImprimir.oi"
-                            disabled placeholder="RX ojo izquierdo" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                        <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinicaAImprimir.od"
-                            disabled placeholder="RX ojo derecho" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="validationCustom01" class="form-label">Antecedentes</label>
-                        <input class="form-control" type="text" name="antecedentes"
-                            [(ngModel)]="historiaClinicaAImprimir.antecedentes" disabled
-                            placeholder="Antecedentes médicos" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="validationCustom01" class="form-label">Tipo de lente </label>
-                        <input class="form-control" type="text" name="tipoLente"
-                            [(ngModel)]="historiaClinicaAImprimir.tipoLente" disabled placeholder="Tipo de lente"
-                            required>
-                    </div>
-
-                    <div class="col-12 ">
-                        <label for="validationCustom01" class="form-label">Motivo </label>
-                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.motivo"
-                            name="motivo" disabled placeholder="Motivo de la consulta" required></textarea>
-                    </div>
-
+                        <input class="form-control" type="text" name="oiDx" [(ngModel)]="historiaClinicaAImprimir.oiDx" placeholder="RX ojo izquierdo" disabled>
+                    </div>             
                     <div class="col-12 ">
                         <label for="validationCustom01" class="form-label">Observaciones </label>
-                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.observaciones"
-                            name="observaciones" disabled placeholder="Observaciones" required></textarea>
+                        <textarea rows="4" style="width: 100%;" [(ngModel)]="historiaClinicaAImprimir.observaciones" name="observaciones" placeholder="Observaciones" disabled ></textarea>
+                    </div>       
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">Tipo de lente</label>
+                        <input class="form-control" type="text" name="tipoLente" [(ngModel)]="historiaClinicaAImprimir.tipoLente" placeholder="RX ojo izquierdo" disabled>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="validationCustom01" class="form-label">CONTROL</label>
+                        <input class="form-control" type="text" name="control" [(ngModel)]="historiaClinicaAImprimir.control" placeholder="RX ojo izquierdo" disabled>
+
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>

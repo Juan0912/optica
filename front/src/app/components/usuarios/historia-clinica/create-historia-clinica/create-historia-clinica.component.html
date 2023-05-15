@@ -48,15 +48,41 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                    <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinica.od" placeholder="RX ojo derecho" required>
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">OD</label>
+                    <input class="form-control" type="text" name="odUso" [(ngModel)]="historiaClinica.odUso" placeholder="RX ojo derecho">
                 </div>
-                <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">A.V.</label>
+                    <input class="form-control" type="text" name="odAVUso" [(ngModel)]="historiaClinica.odAVUso" placeholder="Agudeza visual ojo derecho">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">OI</label>
+                    <input class="form-control" type="text" name="oiUso" [(ngModel)]="historiaClinica.oiUso" placeholder="RX ojo izquierdo">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">A.V.</label>
+                    <input class="form-control" type="text" name="oiAVUso" [(ngModel)]="historiaClinica.oiAVUso" placeholder="Agudeza visual ojo izquierdo">
                 </div>                
                 
+            </div>
+        </div>
+
+        <div class="card-header text-center">
+            <h5 style="margin-bottom: 0px;">A.V. (SC)</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">OD</label>
+                    <input class="form-control" type="text" name="odAVSC" [(ngModel)]="historiaClinica.odAVSC" placeholder="RX ojo derecho" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="validationCustom01" class="form-label">OI</label>
+                    <input class="form-control" type="text" name="oiAVSC" [(ngModel)]="historiaClinica.oiAVSC" placeholder="RX ojo izquierdo" required>
+                </div>               
+                          
             </div>
         </div>
 
@@ -67,12 +93,12 @@
             <div class="row">
 
                 <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                    <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinica.od" placeholder="RX ojo derecho" required>
+                    <label for="validationCustom01" class="form-label">OD</label>
+                    <input class="form-control" type="text" name="odBio" [(ngModel)]="historiaClinica.odBio" placeholder="RX ojo derecho">
                 </div>
                 <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                    <label for="validationCustom01" class="form-label">OI</label>
+                    <input class="form-control" type="text" name="oiBio" [(ngModel)]="historiaClinica.oiBio" placeholder="RX ojo izquierdo">
                 </div>               
                           
             </div>
@@ -85,12 +111,12 @@
             <div class="row">
 
                 <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                    <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinica.od" placeholder="RX ojo derecho" required>
+                    <label for="validationCustom01" class="form-label">OD</label>
+                    <input class="form-control" type="text" name="odFondo" [(ngModel)]="historiaClinica.odFondo" placeholder="RX ojo derecho">
                 </div>
                 <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                    <label for="validationCustom01" class="form-label">OI</label>
+                    <input class="form-control" type="text" name="oiFondo" [(ngModel)]="historiaClinica.oiFondo" placeholder="RX ojo izquierdo">
                 </div>               
                          
             </div>
@@ -102,13 +128,25 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-md-6 form-group">
-                    <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                    <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinica.od" placeholder="RX ojo derecho" required>
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">OD</label>
+                    <input class="form-control" type="text" name="odFinal" [(ngModel)]="historiaClinica.odFinal" placeholder="RX ojo derecho" required>
                 </div>
-                <div class="col-md-6 form-group">
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">A.V.</label>
+                    <input class="form-control" type="text" name="odAVF" [(ngModel)]="historiaClinica.odAVF" placeholder="RX ojo derecho" required>
+                </div>
+                <div class="col-md-3 form-group">
                     <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                    <input class="form-control" type="text" name="oiFinal" [(ngModel)]="historiaClinica.oiFinal" placeholder="RX ojo izquierdo" required>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="validationCustom01" class="form-label">A.V. </label>
+                    <input class="form-control" type="text" name="odAVF" [(ngModel)]="historiaClinica.odAVF" placeholder="RX ojo derecho" required>
+                </div>
+                <div class="col-md-2 form-group">
+                    <label for="validationCustom01" class="form-label">D.P </label>
+                    <input class="form-control" type="text" name="dp" [(ngModel)]="historiaClinica.dp" placeholder="Distancia pupilar" required>
                 </div>               
                          
             </div>
@@ -122,11 +160,11 @@
 
                 <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Ojo derecho </label>
-                    <input class="form-control" type="text" name="od" [(ngModel)]="historiaClinica.od" placeholder="RX ojo derecho" required>
+                    <input class="form-control" type="text" name="odDx" [(ngModel)]="historiaClinica.odDx" placeholder="RX ojo derecho" required>
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Ojo izquierdo </label>
-                    <input class="form-control" type="text" name="oi" [(ngModel)]="historiaClinica.oi" placeholder="RX ojo izquierdo" required>
+                    <input class="form-control" type="text" name="oiDx" [(ngModel)]="historiaClinica.oiDx" placeholder="RX ojo izquierdo" required>
                 </div>             
                 <div class="col-12 ">
                     <label for="validationCustom01" class="form-label">Observaciones </label>
@@ -134,7 +172,7 @@
                 </div>       
                 <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">Tipo de lente</label>
-                    <select class="form-control custom-select" name="tipoDocumento" [(ngModel)]="cliente.tipoDocumento" required>
+                    <select class="form-control custom-select" name="tipoLente" [(ngModel)]="historiaClinica.tipoLente" required>
                         <option disabled selected value="">Selecciona el tipo de lente</option>
                         <option value="MONOFOCAL">MONOFOCAL</option>
                         <option value="BIFOCAL">BIFOCAL</option>
@@ -143,7 +181,7 @@
                 </div>
                 <div class="col-md-6 form-group">
                     <label for="validationCustom01" class="form-label">CONTROL</label>
-                    <select class="form-control custom-select" name="tipoDocumento" [(ngModel)]="cliente.tipoDocumento" required>
+                    <select class="form-control custom-select" name="control" [(ngModel)]="historiaClinica.control" required>
                         <option disabled selected value="">Selecciona el tiempo para el próximo control</option>
                         <option value="1 AÑO">1 AÑO</option>
                         <option value="6 MESES">6 MESES</option>
