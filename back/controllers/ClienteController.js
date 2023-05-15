@@ -54,6 +54,8 @@ const obtenerClientesALlamar = async (req, res) => {
 
 
     try {
+        let dias = req.query.dias;
+        console.log(dias)
         let clienteEncontrado = await cliente.find();
         let clientesALlamar = [];
 
@@ -62,7 +64,25 @@ const obtenerClientesALlamar = async (req, res) => {
                 const fecha1 = moment(clienteItem.historiaClinica[0].createdAt);
                 const fecha2 = moment().tz('America/Bogota');
                 const diferenciaEnDias = fecha2.diff(fecha1, 'days');
-                if (diferenciaEnDias >= 350 && diferenciaEnDias <= 364) clientesALlamar.push(clienteItem);
+                console.log(diferenciaEnDias, clienteItem.nombres)
+                if(dias == 365){
+                    if (diferenciaEnDias >= 350 && diferenciaEnDias <= 364) clientesALlamar.push(clienteItem);
+                }else if(dias == 180){
+                    if (diferenciaEnDias >= 170 && diferenciaEnDias <= 179) clientesALlamar.push(clienteItem);
+                }else if(dias == 90){
+                    if (diferenciaEnDias >= 80 && diferenciaEnDias <= 89) clientesALlamar.push(clienteItem);
+                }
+                else if(dias == 60){
+                    if (diferenciaEnDias >= 50 && diferenciaEnDias <= 59) clientesALlamar.push(clienteItem);
+                }
+                else if(dias == 30){
+                    if (diferenciaEnDias >= 20 && diferenciaEnDias <= 29) clientesALlamar.push(clienteItem);
+                }
+                else if(dias == 7){
+                    if (diferenciaEnDias >= 1 && diferenciaEnDias <= 6) clientesALlamar.push(clienteItem);
+                }else if(dias == 0){
+                    if (diferenciaEnDias == 0) clientesALlamar.push(clienteItem);
+                }
             }
         })
 

@@ -6,6 +6,22 @@
 
     </div>
 </div>
+<div class="row d-flex justify-content-center">
+    <div class="col-6 text-center">
+        <div class="form-group">
+            <h4>Búsqueda por rango de fechas</h4>
+            <select class="form-control" id="inputFecha" [(ngModel)]="rangoSelected" (change)="handleFecha()">
+                <option value="0">-- Sin rango de fechas --</option>
+                <option value="365">Un año</option>
+                <option value="180">Seis meses</option>
+                <option value="90">Tres meses</option>
+                <option value="60">Dos meses</option>
+                <option value="30">Un mes</option>
+                <option value="7">Una semana</option>
+            </select>
+        </div>
+    </div>
+</div>
 
 <div class="card animated fadeIn">
     <p-table #dt1 [value]="clientes" dataKey="id" [rows]="10" [showCurrentPageReport]="true"

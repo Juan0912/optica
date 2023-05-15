@@ -23,10 +23,23 @@
             </div><span class="text-green-500 font-medium">{{ mesActual }} </span>
         </div>
     </div>
+    <!-- <div class="d-none d-xl-block xl:col-4">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-3">
+                <div><span class="block text-500 font-medium mb-3">Consultas realizadas durante el mes</span>
+                    <div class="text-900 font-medium text-xl">{{ kpi.consultasMes }}</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                    style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-users text-blue-500 text-xl"></i>
+                </div>
+            </div><span class="text-green-500 font-medium">{{ mesActual }} </span>
+        </div>
+    </div> -->
     <div class="col-12 xl:col-8">
         <div class="card">
             <h5>Consultas por mes al año</h5>
             <p-chart type="line" [data]="chartData" [options]="chartOptions"></p-chart>
         </div>
     </div>
+    
 </div>
