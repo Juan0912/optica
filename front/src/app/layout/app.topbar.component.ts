@@ -42,14 +42,10 @@ export class AppTopBarComponent {
     }
 
     definirSaludo(){
-        console.log(this.hora);
 
         if(this.hora >= moment().format('00:00') && this.hora < moment().format('12:00')) this.saludo = 'Buenas dias';
         if(this.hora >= moment().format('12:00') && this.hora < moment().format('18:00')) this.saludo = 'Buenas tardes';
         if(this.hora >= moment().format('18:00') && this.hora < moment().format('23:59')) this.saludo = 'Buenas noches';
-        console.log(this.saludo);
-        
-
         
     }
 }
