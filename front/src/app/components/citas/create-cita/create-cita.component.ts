@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ConsultaService } from 'src/app/services/consulta.service';
 
+declare var $ : any;
+
 @Component({
   selector: 'app-create-cita',
   templateUrl: './create-cita.component.html',
@@ -26,10 +28,11 @@ export class CreateCitaComponent implements OnInit {
   agendarConsulta(form: NgForm){
 
     if(form.valid){
-
+      $('.preloader').show();      
       this._consultaService.crearCita(this.consulta).subscribe(resp => {
         console.log(resp);
         this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Consulta agendada con éxito!' });
+      $('.preloader').hide();        
         this._router.navigateByUrl('consultas/inicio');
       });
 

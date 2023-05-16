@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ClienteService } from 'src/app/services/cliente.service';
 
+declare var $ : any;
+
 
 @Component({
   selector: 'app-edit-usuario',
@@ -45,9 +47,11 @@ export class EditUsuarioComponent implements OnInit {
 
   actualizarCliente(form: NgForm){
     if(form.valid){
+      $('.preloader').show();    
       this._clienteService.actualizarClienteAdmin(this.cliente).subscribe(resp => {
         this._router.navigateByUrl('/usuarios/inicio');
         this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente actualizado con éxito!' });  
+        $('.preloader').hide();              
       });
     }
   }

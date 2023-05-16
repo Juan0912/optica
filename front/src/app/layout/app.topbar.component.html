@@ -22,6 +22,9 @@
             </ng-template>
         </p-overlayPanel> -->
 
+        <div class="d-flex align-items-center justify-content-center">
+            <p> {{saludo}} <strong>{{usuarioLogado.nombres}} {{usuarioLogado.apellidos}} </strong> </p>
+        </div>   
         <button class="p-link layout-topbar-button" (click)="logout()" title="Cerrar Sesión">
             <i class="pi pi-sign-out"></i>
             <span>Cerrar Sesión</span>

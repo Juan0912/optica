@@ -30,6 +30,8 @@ export class CreateUsuarioComponent implements OnInit {
     
     if(form.valid){
 
+      $('.preloader').show();
+
       this._clienteService.registroClienteAdmin(this.cliente).subscribe(resp => {
           
         if(resp.resultadoExitoso == false) {
@@ -38,6 +40,8 @@ export class CreateUsuarioComponent implements OnInit {
           this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente creado con éxito!' });
           this._router.navigateByUrl('/usuarios/inicio');
         }
+
+      $('.preloader').hide();
 
       });
 

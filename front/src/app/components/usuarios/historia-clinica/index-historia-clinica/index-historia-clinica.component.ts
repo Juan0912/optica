@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FilterMatchMode, MessageService, SelectItem } from 'primeng/api';
 import { ClienteService } from '../../../../services/cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
 import { jsPDF } from 'jspdf';
 import { environment } from 'src/environments/environment';
-import { log } from 'console';
 require('jspdf-autotable');
+
+declare var $: any;
+
 
 
 @Component({
@@ -53,6 +54,8 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
   }
 
   initData() {
+    $('.preloader').show();
+
     this._route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -71,6 +74,7 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
         console.log(this.historiasClinicas);
         
       }
+      $('.preloader').hide();
 
     });
   }

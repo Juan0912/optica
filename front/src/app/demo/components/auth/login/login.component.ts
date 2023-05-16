@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
         } else {
             this._adminService.loginAdmin({ email: this.email, password: this.password }).subscribe((res: any) => {
                 if (res.resultadoExitoso) {
+                    let usuarioLogado = JSON.stringify(res.datos);
+                    localStorage.setItem('usuarioLogado', usuarioLogado);
                     localStorage.setItem('token', res.token);
                     localStorage.setItem('_id', res.datos._id);
                     this._alertService.showAlert$.emit({ type: 'success', message: res.mensaje, title: 'Éxito!' })

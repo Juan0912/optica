@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import * as moment from 'moment';
 
+declare var $ : any;
+
 
 @Component({
   selector: 'app-index-usuarios',
@@ -113,9 +115,10 @@ export class IndexUsuariosComponent implements OnInit {
   }
 
   eliminarCliente() {
+    $('.preloader').show();
     this._clienteService.eliminarClienteAdmin(this.clienteSelected._id).subscribe(resp => {
       this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Cliente eliminado con éxito!' });
-
+    $('.preloader').hide();      
       this.loadUsers();
       this.modalEliminarCliente = false;
     });
