@@ -80,9 +80,10 @@ const obtenerClientesALlamar = async (req, res) => {
                 }
                 else if(dias == 7){
                     if (diferenciaEnDias >= 1 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
-                }else if(dias == 0){
-                    if (diferenciaEnDias == 0) clientesALlamar.push(clienteItem);
                 }
+                // else if(dias == 0){
+                //     if (diferenciaEnDias == 0) clientesALlamar.push(clienteItem);
+                // }
             }
         })
 
