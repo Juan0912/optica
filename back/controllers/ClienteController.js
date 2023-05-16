@@ -55,7 +55,6 @@ const obtenerClientesALlamar = async (req, res) => {
 
     try {
         let dias = req.query.dias;
-        console.log(dias)
         let clienteEncontrado = await cliente.find();
         let clientesALlamar = [];
 
@@ -64,7 +63,6 @@ const obtenerClientesALlamar = async (req, res) => {
                 const fecha1 = moment(clienteItem.historiaClinica[0].createdAt);
                 const fecha2 = moment().tz('America/Bogota');
                 const diferenciaEnDias = fecha2.diff(fecha1, 'days');
-                console.log(diferenciaEnDias, clienteItem.nombres)
                 if(dias == 365){
                     if (diferenciaEnDias >= 350 && diferenciaEnDias <= 365) clientesALlamar.push(clienteItem);
                 }else if(dias == 180){
