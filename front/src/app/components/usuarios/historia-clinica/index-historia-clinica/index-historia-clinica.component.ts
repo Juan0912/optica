@@ -71,7 +71,6 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
         this.historiasClinicas = resp.datos.historiaClinica;
         this.cliente = localStorage.getItem('cliente');
         this.cliente = JSON.parse(this.cliente);
-        console.log(this.historiasClinicas);
         
       }
       $('.preloader').hide();

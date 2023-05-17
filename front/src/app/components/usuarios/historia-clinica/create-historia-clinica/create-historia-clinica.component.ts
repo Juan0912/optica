@@ -45,7 +45,6 @@ export class CreateHistoriaClinicaComponent {
         }else {
           this.historiaClinica.createdAt = moment(this.historiaClinica.createdAt).tz('America/Bogota');
         }
-        console.log(this.historiaClinica.createdAt)
 
         this.historiaClinica.edadRealizaExamen = this.edad;
         this.historiaClinica.motivo = this.historiaClinica.motivo.toUpperCase();
@@ -56,7 +55,6 @@ export class CreateHistoriaClinicaComponent {
         this.cliente.historiaClinica.unshift(this.historiaClinica);
 
         this._clienteService.actualizarClienteAdmin(this.cliente).subscribe(resp => {
-          console.log(resp);          
           this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clínica creada con éxito!' });
           this._router.navigateByUrl('/usuarios/inicio');        
         });

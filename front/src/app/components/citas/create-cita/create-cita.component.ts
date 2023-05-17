@@ -30,7 +30,6 @@ export class CreateCitaComponent implements OnInit {
     if(form.valid){
       $('.preloader').show();      
       this._consultaService.crearCita(this.consulta).subscribe(resp => {
-        console.log(resp);
         this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Consulta agendada con éxito!' });
       $('.preloader').hide();        
         this._router.navigateByUrl('consultas/inicio');
