@@ -55,6 +55,7 @@ const obtenerClientesALlamar = async (req, res) => {
 
     try {
         let dias = req.query.dias;
+        console.log(dias);
         let clienteEncontrado = await cliente.find();
         let clientesALlamar = [];
 
@@ -65,14 +66,14 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(365,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 335 && diferenciaEnDias <= 350) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }else if(dias == 180) {
                     if(clienteItem.historiaClinica[0].control == '6 MESES') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(180,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 90 && diferenciaEnDias <= 165) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }
                 else if(dias == 90) {
@@ -80,7 +81,7 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(90,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 60 && diferenciaEnDias <= 75) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }
                 else if(dias == 60) {
