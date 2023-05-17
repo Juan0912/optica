@@ -91,7 +91,7 @@ const obtenerClientesALlamar = async (req, res) => {
                         console.log(diferenciaEnDias);
                         console.log(fecha1);
                         console.log(fecha2);
-                        if (diferenciaEnDias >= 30 && diferenciaEnDias <= 45) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }
                 else if(dias == 30) {
