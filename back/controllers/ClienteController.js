@@ -60,36 +60,35 @@ const obtenerClientesALlamar = async (req, res) => {
 
         clienteEncontrado.map((clienteItem) => {
             if (clienteItem.historiaClinica.length > 0) {
-                console.log(clienteItem.historiaClinica[0]);
                 if(dias == 365){
                     if(clienteItem.historiaClinica[0].control == 'UN AÑO') {
-                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(350,'days');
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(365,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 350 && diferenciaEnDias <= 365) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 335 && diferenciaEnDias <= 350) clientesALlamar.push(clienteItem);
                     }
                 }else if(dias == 180) {
                     if(clienteItem.historiaClinica[0].control == '6 MESES') {
-                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(165,'days');
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(180,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 165 && diferenciaEnDias <= 180) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 90 && diferenciaEnDias <= 165) clientesALlamar.push(clienteItem);
                     }
                 }
                 else if(dias == 90) {
                     if(clienteItem.historiaClinica[0].control == '3 MESES') {
-                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(75,'days');
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(90,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 75 && diferenciaEnDias <= 90) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 60 && diferenciaEnDias <= 75) clientesALlamar.push(clienteItem);
                     }
                 }
                 else if(dias == 60) {
                     if(clienteItem.historiaClinica[0].control == '2 MESES') {
-                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(45,'days');
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(60,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        if (diferenciaEnDias >= 45 && diferenciaEnDias <= 60) clientesALlamar.push(clienteItem);
+                        if (diferenciaEnDias >= 30 && diferenciaEnDias <= 45) clientesALlamar.push(clienteItem);
                     }
                 }
                 else if(dias == 30) {
@@ -97,9 +96,6 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(30,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        console.log(diferenciaEnDias);
-                        console.log(fecha1)
-                        console.log(fecha2)
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }
@@ -108,9 +104,6 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(7,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
-                        console.log(diferenciaEnDias);
-                        console.log(fecha1)
-                        console.log(fecha2)
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
                     }
                 }
