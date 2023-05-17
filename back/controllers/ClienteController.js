@@ -65,14 +65,14 @@ const obtenerClientesALlamar = async (req, res) => {
                     if(clienteItem.historiaClinica[0].control == 'UN AÑO') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(350,'days');
                         const fecha2 = moment().tz('America/Bogota');
-                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        const diferenciaEnDias = fecha1.diff(fecha2, 'days');
                         if (diferenciaEnDias >= 350 && diferenciaEnDias <= 365) clientesALlamar.push(clienteItem);
                     }
                 }else if(dias == 180) {
                     if(clienteItem.historiaClinica[0].control == '6 MESES') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(165,'days');
                         const fecha2 = moment().tz('America/Bogota');
-                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        const diferenciaEnDias = fecha1.diff(fecha2, 'days');
                         if (diferenciaEnDias >= 165 && diferenciaEnDias <= 180) clientesALlamar.push(clienteItem);
                     }
                 }
@@ -80,7 +80,7 @@ const obtenerClientesALlamar = async (req, res) => {
                     if(clienteItem.historiaClinica[0].control == '3 MESES') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(75,'days');
                         const fecha2 = moment().tz('America/Bogota');
-                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        const diferenciaEnDias = fecha1.diff(fecha2, 'days');
                         if (diferenciaEnDias >= 75 && diferenciaEnDias <= 90) clientesALlamar.push(clienteItem);
                     }
                 }
@@ -88,7 +88,7 @@ const obtenerClientesALlamar = async (req, res) => {
                     if(clienteItem.historiaClinica[0].control == '2 MESES') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(45,'days');
                         const fecha2 = moment().tz('America/Bogota');
-                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        const diferenciaEnDias = fecha1.diff(fecha2, 'days');
                         if (diferenciaEnDias >= 45 && diferenciaEnDias <= 60) clientesALlamar.push(clienteItem);
                     }
                 }
@@ -96,7 +96,7 @@ const obtenerClientesALlamar = async (req, res) => {
                     if(clienteItem.historiaClinica[0].control == '2 MESES') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(15,'days');
                         const fecha2 = moment().tz('America/Bogota');
-                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        const diferenciaEnDias = fecha1.diff(fecha2, 'days');
                         if (diferenciaEnDias >= 15 && diferenciaEnDias <= 30) clientesALlamar.push(clienteItem);
                     }
                 }
@@ -104,7 +104,7 @@ const obtenerClientesALlamar = async (req, res) => {
                     if(clienteItem.historiaClinica[0].control == '1 SEMANA') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(7,'days');
                         const fecha2 = moment().tz('America/Bogota');
-                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        const diferenciaEnDias = fecha1.diff(fecha2, 'days');
                         console.log(diferenciaEnDias);
                         console.log(fecha1)
                         console.log(fecha2)
