@@ -93,7 +93,7 @@ const obtenerClientesALlamar = async (req, res) => {
                     }
                 }
                 else if(dias == 30) {
-                    if(clienteItem.historiaClinica[0].control == '2 MESES') {
+                    if(clienteItem.historiaClinica[0].control == '1 MES') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(15,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
