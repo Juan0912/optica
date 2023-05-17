@@ -60,25 +60,64 @@ const obtenerClientesALlamar = async (req, res) => {
 
         clienteEncontrado.map((clienteItem) => {
             if (clienteItem.historiaClinica.length > 0) {
-                const fecha1 = moment(clienteItem.historiaClinica[0].createdAt);
-                const fecha2 = moment().tz('America/Bogota');
-                const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+
                 if(dias == 365){
-                    if (diferenciaEnDias >= 350 && diferenciaEnDias <= 365) clientesALlamar.push(clienteItem);
-                }else if(dias == 180){
-                    if (diferenciaEnDias >= 170 && diferenciaEnDias <= 180) clientesALlamar.push(clienteItem);
-                }else if(dias == 90){
-                    if (diferenciaEnDias >= 80 && diferenciaEnDias <= 90) clientesALlamar.push(clienteItem);
+                    if(clienteItem.historiaClinica[0].control == 'UN AÑO') {
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(350,'days');
+                        const fecha2 = moment().tz('America/Bogota');
+                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        if (diferenciaEnDias >= 350 && diferenciaEnDias <= 365) clientesALlamar.push(clienteItem);
+                    }
+                }else if(dias == 180) {
+                    if(clienteItem.historiaClinica[0].control == '6 MESES') {
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(165,'days');
+                        const fecha2 = moment().tz('America/Bogota');
+                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        if (diferenciaEnDias >= 165 && diferenciaEnDias <= 180) clientesALlamar.push(clienteItem);
+                    }
                 }
-                else if(dias == 60){
-                    if (diferenciaEnDias >= 50 && diferenciaEnDias <= 60) clientesALlamar.push(clienteItem);
+                else if(dias == 90) {
+                    if(clienteItem.historiaClinica[0].control == '3 MESES') {
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(75,'days');
+                        const fecha2 = moment().tz('America/Bogota');
+                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        if (diferenciaEnDias >= 75 && diferenciaEnDias <= 90) clientesALlamar.push(clienteItem);
+                    }
                 }
-                else if(dias == 30){
-                    if (diferenciaEnDias >= 20 && diferenciaEnDias <= 30) clientesALlamar.push(clienteItem);
+                else if(dias == 60) {
+                    if(clienteItem.historiaClinica[0].control == '2 MESES') {
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(45,'days');
+                        const fecha2 = moment().tz('America/Bogota');
+                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        if (diferenciaEnDias >= 45 && diferenciaEnDias <= 60) clientesALlamar.push(clienteItem);
+                    }
                 }
-                else if(dias == 7){
-                    if (diferenciaEnDias >= 1 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
+                else if(dias == 30) {
+                    if(clienteItem.historiaClinica[0].control == '2 MESES') {
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(15,'days');
+                        const fecha2 = moment().tz('America/Bogota');
+                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        if (diferenciaEnDias >= 15 && diferenciaEnDias <= 30) clientesALlamar.push(clienteItem);
+                    }
                 }
+                else if(dias == 7) {
+                    if(clienteItem.historiaClinica[0].control == '1 SEMANA') {
+                        const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(7,'days');
+                        const fecha2 = moment().tz('America/Bogota');
+                        const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        if (diferenciaEnDias >= 0 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
+                    }
+                }
+
+
+                
+                
+                // else if(dias == 30){
+                //     if (diferenciaEnDias >= 15 && diferenciaEnDias <= 30) clientesALlamar.push(clienteItem);
+                // }
+                // else if(dias == 7){
+                //     if (diferenciaEnDias >= 1 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
+                // }
                 // else if(dias == 0){
                 //     if (diferenciaEnDias == 0) clientesALlamar.push(clienteItem);
                 // }
