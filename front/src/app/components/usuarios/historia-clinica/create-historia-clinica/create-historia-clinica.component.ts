@@ -40,8 +40,12 @@ export class CreateHistoriaClinicaComponent {
         this.cliente = resp.datos;
 
         if(this.historiaClinica.createdAt == null){
+          
           this.historiaClinica.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+        }else {
+          this.historiaClinica.createdAt = moment(this.historiaClinica.createdAt).tz('America/Bogota');
         }
+        console.log(this.historiaClinica.createdAt)
 
         this.historiaClinica.edadRealizaExamen = this.edad;
         this.historiaClinica.motivo = this.historiaClinica.motivo.toUpperCase();

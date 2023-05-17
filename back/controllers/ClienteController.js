@@ -57,11 +57,10 @@ const obtenerClientesALlamar = async (req, res) => {
         let dias = req.query.dias;
         let clienteEncontrado = await cliente.find();
         let clientesALlamar = [];
-        console.log(clienteEncontrado);
 
         clienteEncontrado.map((clienteItem) => {
             if (clienteItem.historiaClinica.length > 0) {
-
+                console.log(clienteItem.historiaClinica[0]);
                 if(dias == 365){
                     if(clienteItem.historiaClinica[0].control == 'UN AÑO') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(350,'days');
@@ -102,14 +101,13 @@ const obtenerClientesALlamar = async (req, res) => {
                     }
                 }
                 else if(dias == 7) {
-                    console.log('si');
-                    console.log(clienteItem.historiaClinica[0]);
                     if(clienteItem.historiaClinica[0].control == '1 SEMANA') {
-                        console.log(clienteItem.historiaClinica[0]);
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(7,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha2.diff(fecha1, 'days');
                         console.log(diferenciaEnDias);
+                        console.log(fecha1)
+                        console.log(fecha2)
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
                     }
                 }
