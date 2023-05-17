@@ -102,9 +102,11 @@ const obtenerClientesALlamar = async (req, res) => {
                 }
                 else if(dias == 7) {
                     if(clienteItem.historiaClinica[0].control == '1 SEMANA') {
+                        console.log(clienteItem.historiaClinica[0]);
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(7,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha2.diff(fecha1, 'days');
+                        console.log(diferenciaEnDias);
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 7) clientesALlamar.push(clienteItem);
                     }
                 }
