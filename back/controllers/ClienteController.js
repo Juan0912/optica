@@ -66,6 +66,9 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(365,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
+                        console.log(diferenciaEnDias);
+                        console.log(fecha1);
+                        console.log(fecha2);
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }else if(dias == 180) {
@@ -73,6 +76,9 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(180,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
+                        console.log(diferenciaEnDias);
+                        console.log(fecha1);
+                        console.log(fecha2);
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }
@@ -81,6 +87,9 @@ const obtenerClientesALlamar = async (req, res) => {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(90,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
+                        console.log(diferenciaEnDias);
+                        console.log(fecha1);
+                        console.log(fecha2);
                         if (diferenciaEnDias >= 0 && diferenciaEnDias <= 15) clientesALlamar.push(clienteItem);
                     }
                 }
