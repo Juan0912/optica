@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 // Se establece puerto del servidor.
 const port = process.env.PORT || 4201;
 const url_bd = process.env.BD_URL || 'mongodb://127.0.0.1:27017/optica';
-
+const { CONSTANTS } = require('./config/constants');
 
 
 
@@ -28,7 +28,7 @@ const app = express();
 // ========================================================= SOCKET =========================================
 
 // Se establece conexión a base de datos mongo.
-mongoose.connect('mongodb://mongo:KHmWhsOzySUXNUgHUOCQ@containers-us-west-8.railway.app:7801/optica?authSource=admin', { useUnifiedTopology: true, useNewUrlParser: true }, (err, res) => {
+mongoose.connect(CONSTANTS.bd, { useUnifiedTopology: true, useNewUrlParser: true }, (err, res) => {
     if (err) console.log(err);
     else {
         app.listen(port, () => {
@@ -57,7 +57,7 @@ app.use((req, res, next) => {
 app.use('/api', adminRoutes);
 app.use('/api', clienteRoutes);
 app.use('/api', citaRoutes);
-
+// "start": "nodemon npm app.js",
 
 
 
