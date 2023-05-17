@@ -62,7 +62,7 @@ const obtenerClientesALlamar = async (req, res) => {
         clienteEncontrado.map((clienteItem) => {
             if (clienteItem.historiaClinica.length > 0) {
                 if(dias == 365){
-                    if(clienteItem.historiaClinica[0].control == 'UN AÑO') {
+                    if(clienteItem.historiaClinica[0].control == '1 AÑO') {
                         const fecha1 = moment(clienteItem.historiaClinica[0].createdAt).add(365,'days');
                         const fecha2 = moment().tz('America/Bogota');
                         const diferenciaEnDias = fecha1.diff(fecha2, 'days');
