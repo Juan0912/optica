@@ -152,7 +152,7 @@ const kpiConsultasPorMes = async (req, res) => {
             if(day == currentDateDay && currentYear == createdAtDate.getFullYear() && mes == currentDateMes) kpi.consultasDia++;
         }
     }
-
+    console.log(kpi);
     res.status(200).json({
         datos: {
            kpi
