@@ -25,10 +25,10 @@ const citaRoutes = require('./routes/cita');
 // Se inicializa la app.
 const app = express();
 
-app.get('*', () => {
-
-});
-app.use(express.static('static'));
+app.use(express.static(__dirname + '/static'));
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/static/index.html');
+  });
 
 // ========================================================= SOCKET =========================================
 
