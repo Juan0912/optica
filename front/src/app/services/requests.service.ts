@@ -20,7 +20,7 @@ export class RequestsService {
     get(endpoint: string) {
         $('.preloader').show();
         // Request.
-        return this._http.get(`${this.url}${endpoint}`,{responseType: 'text'}).pipe(
+        return this._http.get(`${this.url}${endpoint}`).pipe(
             map((res: any) => {
                 $('.preloader').hide();
                 return res;
