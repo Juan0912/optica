@@ -25,6 +25,10 @@ const citaRoutes = require('./routes/cita');
 // Se inicializa la app.
 const app = express();
 
+app.get('*', () => {
+
+});
+
 // ========================================================= SOCKET =========================================
 
 // Se establece conexión a base de datos mongo.
@@ -38,6 +42,7 @@ mongoose.connect(CONSTANTS.bd, { useUnifiedTopology: true, useNewUrlParser: true
         });
     }
 });
+
 
 // Se realizan configuraciones para parsear información json.
 app.use(bodyparser.urlencoded({ extended: true }));
