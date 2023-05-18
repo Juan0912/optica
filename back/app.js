@@ -26,9 +26,7 @@ const citaRoutes = require('./routes/cita');
 const app = express();
 
 app.use(express.static(__dirname + '/static'));
-app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/static/index.html');
-  });
+
 
 // ========================================================= SOCKET =========================================
 
@@ -64,6 +62,9 @@ app.use((req, res, next) => {
 app.use('/api', adminRoutes);
 app.use('/api', clienteRoutes);
 app.use('/api', citaRoutes);
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/static/index.html');
+  });
 // "start": "nodemon npm app.js",
 
 
