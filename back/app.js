@@ -28,6 +28,7 @@ const app = express();
 app.get('*', () => {
 
 });
+app.use(express.static('static'));
 
 // ========================================================= SOCKET =========================================
 
@@ -47,7 +48,7 @@ mongoose.connect(CONSTANTS.bd, { useUnifiedTopology: true, useNewUrlParser: true
 // Se realizan configuraciones para parsear información json.
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json({ extended: true, limit: '50mb' }));
-app.use(express.static('static'));
+
 
 // Configuración de cors.
 app.use((req, res, next) => {
