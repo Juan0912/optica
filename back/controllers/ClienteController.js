@@ -14,6 +14,7 @@ const registroCliente = async (req, res) => {
     // Se procesa la data.
     const data = req.body;
     let listadoClientes = [];
+    let userResponsable = req.user.nombres;
 
     // Se valida existencia del usuario.
     listadoClientes = await cliente.find({ identificacion: data.identificacion });
@@ -23,6 +24,7 @@ const registroCliente = async (req, res) => {
         // Se registra el cliente
         data.nombres = data.nombres.toUpperCase();
         data.apellidos = data.apellidos.toUpperCase();
+        data.usuarioCrea = userResponsable;
         const reg = await cliente.create(data);
         res.status(200).send({
             datos: true,
@@ -126,6 +128,7 @@ const actualizarCliente = async (req, res) => {
     // Se procesa la data.
     const data = req.body;
     const idCliente = req.params.id;
+    let userResponsable = req.user.nombres;
 
     // Se valida existencia del usuario.
     let elementoActualizado = await cliente.findOneAndUpdate({ _id: idCliente }, {
@@ -137,7 +140,9 @@ const actualizarCliente = async (req, res) => {
         identificacion: data.identificacion,
         tipoDocumento: data.tipoDocumento,
         historiaClinica: data.historiaClinica,
-        correo: data.correo
+        correo: data.correo,
+        modificado: moment().format('YYYY-MM-DD'),
+        usuarioModifica: userResponsable
     });
 
     res.status(200).send({
@@ -215,12 +220,15 @@ const eliminarCliente = async (req, res) => {
 const actualizarLlamadoCliente = async (req, res) => {
 
     const idCliente = req.params.id;
+    let userResponsable = req.user.nombres;
+
 
 
     const clienteEncontrado = await cliente.findById({ _id: idCliente });
 
     const clienteActualizado = await cliente.findOneAndUpdate({ _id: idCliente }, {
-        llamado: !clienteEncontrado.llamado
+        llamado: !clienteEncontrado.llamado,
+        usuarioCambiaEstado: userResponsable
     });
 
 

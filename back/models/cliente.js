@@ -16,6 +16,10 @@ const ClienteSchema = Schema({
     llamado: { type: Boolean, required: false, default: false },
     historiaClinica: [{ type: Object, required: false }],
     correo: { type: String, required: false },
+    usuarioModifica: { type: String, required: false },
+    usuarioCambiaEstado: { type: String, required: false },
+    usuarioCrea: { type: String, required: false },
+    modificado: { type: String, required: false },
     createdAt: { type: Date, required: true, default: Date.now },
 });
 

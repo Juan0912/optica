@@ -10,7 +10,9 @@ const moment = require('moment-timezone');
 
 const crearCita = async (req, res) => {
 
+    let userResponsable = req.user.nombres;
     const data = req.body;
+    data.usuarioCrea = userResponsable;
     try {
         let citaCreada = await cita.create(data);
 
@@ -52,6 +54,8 @@ const actualizarCita = async (req, res) => {
     // Se procesa la data.
     const data = req.body;
     const idCita = req.params.id;
+    let userResponsable = req.user.nombres;
+
 
     // Se valida existencia del usuario.
     let elementoActualizado = await cita.findOneAndUpdate({ _id: idCita }, {
@@ -60,7 +64,9 @@ const actualizarCita = async (req, res) => {
         correo: data.correo,
         telefono: data.telefono,
         fecha: data.fecha,
-        hora: data.hora
+        hora: data.hora,
+        modificado: moment().format('YYYY-MM-DD'),
+        usuarioModifica: userResponsable
     });
 
     res.status(200).send({
@@ -141,11 +147,13 @@ const eliminarCita = async (req, res) => {
 const actualizarConsultaRealizada = async (req, res) => {
 
     const idCita = req.params.id;
+    let userResponsable = req.user.nombres;
 
     const citaEncontrada = await cita.findById({ _id: idCita });
 
     const citaActualizada = await cita.findOneAndUpdate({ _id: idCita }, {
-        realizada: !citaEncontrada.realizada
+        realizada: !citaEncontrada.realizada,
+        usuarioCambiaEstado: userResponsable
     });
 
 
