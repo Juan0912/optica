@@ -12,7 +12,7 @@ api.post('/registroAdmin', adminController.registroAdmin);
 // Ruta para el inicio de sesion de los administradores.
 api.post('/loginAdmin', adminController.loginAdmin);
 // Ruta para obtener kpis.
-api.get('/kpiConsultasPorMes', [auth.auth], adminController.kpiConsultasPorMes);
+api.get('/kpiConsultasPorMes', auth.auth, adminController.kpiConsultasPorMes);
 
 
 
