@@ -30,18 +30,25 @@
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
-                        Número de Identificación
-                        <p-columnFilter type="text" field="identificacion" display="menu" [showAddButton]="false"
+                       Tipo de Documento
+                        <p-columnFilter type="text" field="tipoDocumento" display="menu" [showAddButton]="false"
                             [matchModeOptions]="matchModeOptions" [showOperator]="false"></p-columnFilter>
                     </div>
                 </th>
                 <th style="min-width:10rem">
                     <div class="flex align-items-center">
+                        Número de Identificación
+                        <p-columnFilter type="text" field="identificacion" display="menu" [showAddButton]="false"
+                            [matchModeOptions]="matchModeOptions" [showOperator]="false"></p-columnFilter>
+                    </div>
+                </th>
+                <!-- <th style="min-width:10rem">
+                    <div class="flex align-items-center">
                         Fecha de Nacimiento
                         <p-columnFilter type="date" field="fNacimiento" display="menu" [showAddButton]="false"
                             [showOperator]="false"></p-columnFilter>
                     </div>
-                </th>
+                </th> -->
                
                 <th style="min-width:10rem">
                     <div class="flex justify-content-center align-items-center">
@@ -59,11 +66,14 @@
                     {{ cliente.apellidos }}
                 </td>
                 <td>
-                    {{ cliente.identificacion }}
+                    {{ cliente.tipoDocumento }}
                 </td>
                 <td>
-                    {{ cliente.fNacimiento | date: 'dd/MM/yyyy' }}
+                    {{ cliente.identificacion }}
                 </td>
+                <!-- <td>
+                    {{ cliente.fNacimiento | date: 'dd/MM/yyyy' }}
+                </td> -->
              
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">

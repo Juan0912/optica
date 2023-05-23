@@ -25,6 +25,9 @@ const citaRoutes = require('./routes/cita');
 // Se inicializa la app.
 const app = express();
 
+app.use(express.static(__dirname + '/static'));
+
+
 // ========================================================= SOCKET =========================================
 
 // Se establece conexión a base de datos mongo.
@@ -39,9 +42,11 @@ mongoose.connect(CONSTANTS.bd, { useUnifiedTopology: true, useNewUrlParser: true
     }
 });
 
+
 // Se realizan configuraciones para parsear información json.
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json({ extended: true, limit: '50mb' }));
+
 
 // Configuración de cors.
 app.use((req, res, next) => {
@@ -57,6 +62,9 @@ app.use((req, res, next) => {
 app.use('/api', adminRoutes);
 app.use('/api', clienteRoutes);
 app.use('/api', citaRoutes);
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/static/index.html');
+  });
 // "start": "nodemon npm app.js",
 
 
