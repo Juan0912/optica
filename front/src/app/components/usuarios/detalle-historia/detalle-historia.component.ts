@@ -19,7 +19,7 @@ export class DetalleHistoriaComponent implements OnInit, OnDestroy{
     if(cliente) this.cliente = JSON.parse(cliente);
     if(historia) {
       this.historiaClinicaAImprimir = JSON.parse(historia);
-      // window.print();
+      window.print();
     };
   }
 
