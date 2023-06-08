@@ -32,7 +32,9 @@ export class EditHistoriaClinicaComponent implements OnInit {
 
     this._route.params.subscribe(params => {
       this.index = params['position'];
-    });    
+    });
+    
+    this.calcularEdad();
 
   }
 
@@ -57,7 +59,7 @@ export class EditHistoriaClinicaComponent implements OnInit {
         if(this.historiaClinica.createdAt == null){
           
           this.historiaClinica.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
-          
+
         }else {
           this.historiaClinica.createdAt = moment(this.historiaClinica.createdAt).format('YYYY-MM-DD HH:mm:ss');
         }
@@ -86,6 +88,20 @@ export class EditHistoriaClinicaComponent implements OnInit {
     }
 
   }
+
+  calcularEdad(){
+
+    let fechaNacimiento;
+    const formatoFecha = "YYYY-MM-DD";
+
+    this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
+      // Calcula la edad actual
+      fechaNacimiento = resp.datos.fNacimiento
+      const edad = moment().diff(moment(fechaNacimiento, formatoFecha), 'years');
+      this.edad = edad;
+    });    
+  }
+
 }
 
  
