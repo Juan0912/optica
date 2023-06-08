@@ -2,16 +2,16 @@
 <div class="border-bottom mb-5 animated fadeIn fast">
     <h1 class="mt-2 mt-md-4 mb-3">Historia Clínica</h1>
     <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-        <p class="text-muted">Este módulo permite registrar el resultado de la consulta para un paciente.</p>
+        <p class="text-muted">Este módulo permite editar la historia clínica de un paciente.</p>
 
     </div>
 </div>
 
-<form #form="ngForm" (ngSubmit)="crearHistoriaClinica(form)" class="animated fadein">
+<form #form="ngForm" (ngSubmit)="actualizarHistoriaClinica(form)" class="animated fadein">
     <div class="card box-shadow-sm">
         
         <div class="card-header">
-            <h5 style="margin-bottom: 0px;">Registro de consulta</h5>
+            <h5 style="margin-bottom: 0px;">Editar historia clínica</h5>
         </div>
         <div class="card-body">
             <div class="row">
@@ -218,7 +218,7 @@
         </div>
 
         <div class="card-footer text-center">
-            <button  type="submit" class="btn btn-primary mr-3">Registrar</button>
+            <button  type="submit" class="btn btn-primary mr-3">Actualizar</button>
             <button type="button" class="btn btn-warning mr-3" [routerLink]="['/usuarios/inicio']">Cancelar</button>            
         </div>
     </div>

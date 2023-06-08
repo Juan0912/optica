@@ -10,6 +10,7 @@ import { CreateHistoriaClinicaComponent } from './usuarios/historia-clinica/crea
 import { IndexAgendaLlamadasComponent } from './agenda-llamadas/index-agenda-llamadas/index-agenda-llamadas.component';
 import { CreateCitaComponent } from './citas/create-cita/create-cita.component';
 import { EditCitaComponent } from './citas/edit-cita/edit-cita.component';
+import { EditHistoriaClinicaComponent } from './usuarios/historia-clinica/edit-historia-clinica/edit-historia-clinica.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
@@ -21,6 +22,7 @@ import { EditCitaComponent } from './citas/edit-cita/edit-cita.component';
                 {path:'editar/:id', component: EditUsuarioComponent, canActivate: [AdminGuard]},
                 {path:'historia-clinica/inicio/:id', component: IndexHistoriaClinicaComponent, canActivate: [AdminGuard]},
                 {path:'historia-clinica/registro/:id', component: CreateHistoriaClinicaComponent, canActivate: [AdminGuard]},
+                {path:'historia-clinica/editar/:position', component: EditHistoriaClinicaComponent, canActivate: [AdminGuard]},
             ]
         }, 
         {

@@ -68,6 +68,7 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
       } else {
 
         localStorage.setItem('cliente', JSON.stringify(resp));
+        localStorage.setItem('id_cliente', JSON.stringify(resp.datos._id));
         this.historiasClinicas = resp.datos.historiaClinica;
         this.cliente = localStorage.getItem('cliente');
         this.cliente = JSON.parse(this.cliente);
@@ -163,6 +164,10 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
       this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clínica eliminada con éxito!' });
       this.initData();
     });
+  }
+
+  editarHistoriaClinica(historiaClinica: any){
+    localStorage.setItem('editarHistoria', JSON.stringify(historiaClinica));
   }
 
 
