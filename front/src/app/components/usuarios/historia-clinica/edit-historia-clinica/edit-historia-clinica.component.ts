@@ -74,7 +74,7 @@ export class EditHistoriaClinicaComponent implements OnInit {
 
         this._clienteService.actualizarClienteAdmin(this.cliente).subscribe(resp => {
           this._messageService.add({ severity: 'success', summary: resp.mensaje, detail: 'Historia clínica actualizada con éxito!' });
-          this._router.navigateByUrl('/usuarios/inicio');        
+          this._router.navigateByUrl(`/usuarios/historia-clinica/inicio/${this.id}`);        
         });
 
         
