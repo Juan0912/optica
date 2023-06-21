@@ -46,16 +46,10 @@ export class EditHistoriaClinicaComponent implements OnInit {
 
   actualizarHistoriaClinica(form: NgForm){
     if(form.valid){
-      
-      console.log(this.historiaClinica);
-      
-
+            
       this._clienteService.obtenerClienteAdmin(this.id).subscribe(resp => {
         this.cliente = resp.datos;
-
-        console.log(resp);
         
-
         if(this.historiaClinica.createdAt == null){
           
           this.historiaClinica.createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
