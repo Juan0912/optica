@@ -72,7 +72,7 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
         this.historiasClinicas = resp.datos.historiaClinica;
         this.cliente = localStorage.getItem('cliente');
         this.cliente = JSON.parse(this.cliente);
-        
+
       }
       $('.preloader').hide();
 
@@ -91,62 +91,90 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
   imprimirHistoriaClinica() {
     localStorage.setItem('detalleHistoriaClinica', JSON.stringify(this.historiaClinicaAImprimir));
     this.modalImprimir = false;
-    window.open(`${environment.urlFront}detalle-historia-clinica`, '_blank');
+    this.exportPDF();
+    // window.open(`${environment.urlFront}detalle-historia-clinica`, '_blank');
+
   }
 
   exportPDF() {
     const doc: any = new jsPDF();
 
-    const logoUrl = 'assets/images/logo.jpg';
-    // Agregar logo de la empresa
+    const logoUrl = 'assets/images/logo2.png';
     const imgData = logoUrl;
-    doc.addImage(imgData, 'PNG', 14, 20, 40, 40);
-    // Agrega el título "Historia Clínica"
+    var x = doc.internal.pageSize.getWidth() - 20;
+    var y = 5;
+    var width = 60; 
+
+    doc.addImage(imgData, 'PNG', 14, y, 60, 20);
+    doc.setFontSize(9);
+
+    doc.text("Carrera 22 # 26-57", x, y + 5, { align: "right" });
+    doc.text("Manizales", x, y + 10, { align: "right" });
+    doc.text("Cuidado profesional para tus ojos", x, y + 15, { align: "right" });
+
     doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
-    doc.text("Historia Clínica", 130, 20, { align: 'right' });
+    doc.text("Historia Clínica", 130, y + 25, { align: 'right' });
 
-    // Agrega las secciones de información
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "bold");
-    doc.text("Edad:", 60, 35);
+    var headers = [['Nombres', 'Apellidos', 'Documento', 'Fecha Consulta']];
+    var data = [
+      [`${this.cliente.datos.nombres}`, `${this.cliente.datos.apellidos}`, `${this.cliente.datos.identificacion}`, `${this.historiaClinicaAImprimir.createdAt}`],
+    ];
+
+    var startY = 50;
+    var styles = {
+      fontSize: 8 // Tamaño de letra en puntos
+    };
+    doc.autoTable({
+      head: headers,
+      body: data,
+      startY: 35,
+      styles: styles
+    });
+
+    doc.rect(14, y + 45, 182, 25, "S");
+    doc.setFontSize(10);
+    
+    doc.text("RX FINAL", 100, 45 + 10);
+    doc.text("_____________________________________________________________________________________________", 14,57);
+    doc.setFontSize(8);
+    
+    doc.text("OJO DERECHO", 15, 62);
+    doc.text("AV", 60, 62);
+    doc.text("OJO IZQUIERDO", 100, 62);
+    doc.text("AV", 150, 62);
+    
+    doc.text("D.P.", 15, 70);
+    doc.text("ADD", 60, 70);
+    
     doc.setFont("helvetica", "nomral");
-    doc.text(`${this.historiaClinicaAImprimir.edadRealizaExamen}`, 80, 35);
-    doc.setFont("helvetica", "bold");
-    doc.text("Ocupación:", 120, 35);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.ocupacion}`, 145, 35);
+    console.log(this.historiaClinicaAImprimir)
+    doc.text(`${this.historiaClinicaAImprimir.odFinal ?? 'N/A'}`, 15, 65);
+    doc.text(`${this.historiaClinicaAImprimir.odAVF ?? 'N/A'}`, 60, 65);
+    doc.text(`${this.historiaClinicaAImprimir.oiFinal ?? 'N/A'}`, 100, 65);
+    doc.text(`${this.historiaClinicaAImprimir.oiAVF ?? 'N/A'}`, 150, 65);
+    
+    doc.text(`${this.historiaClinicaAImprimir.dp ?? 'N/A'}`, 15, 73);
+    doc.text(`${this.historiaClinicaAImprimir.add ?? 'N/A'}`, 60, 73);
 
+    doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
-    doc.text("Ojo izquierdo:", 60, 40);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.oi}`, 89, 40);
-    doc.setFont("helvetica", "bold");
-    doc.text("Ojo derecho:", 120, 40);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.od}`, 147, 40);
+    doc.rect(14, 80, 182, 35, "S");
+    doc.text("DIAGNOSTICO FINAL", 90, 85);
+    doc.text("_____________________________________________________________________________________________", 14,87);
+    doc.setFontSize(8);
+    doc.text("OJO DERECHO", 15, 92);
+    doc.text("OJO IZQUIERDO", 100, 92);
+    doc.text("TIPO LENTE", 15, 100);
+    doc.text("CONTROL", 100, 100);
+    doc.text("OBSERVACIONES", 15, 108);
+    doc.setFont("helvetica", "nomral");
+    doc.text(`${this.historiaClinicaAImprimir.odDx ?? 'N/A'}`, 15, 95);
+    doc.text(`${this.historiaClinicaAImprimir.oiDx ?? 'N/A'}`, 100, 95);
+    doc.text(`${this.historiaClinicaAImprimir.tipoLente ?? 'N/A'}`, 15,103);
+    doc.text(`${this.historiaClinicaAImprimir.control ?? 'N/A'}`, 100,103);
+    doc.text(`${this.historiaClinicaAImprimir.observaciones ?? 'N/A'}`, 15, 111);
 
-    doc.setFont("helvetica", "bold");
-    doc.text("Antecedentes:", 60, 45);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.antecedentes}`, 60, 50, { maxWidth: 60, align: "justify" });
-    doc.setFont("helvetica", "bold");
-    doc.text("Tipo de lente:", 120, 45);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.tipoLente}`, 149, 45);
-
-    // Agrega las secciones adicionales
-    doc.setFont("helvetica", "bold");
-    doc.text("Motivo:", 20, 70);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.motivo}`, 20, 75, { maxWidth: 170, align: "justify" });
-
-    doc.setFont("helvetica", "bold");
-    doc.text("Observaciones:", 20, 105);
-    doc.setFont("helvetica", "normal");
-    doc.text(`${this.historiaClinicaAImprimir.observaciones}`, 20, 110, { maxWidth: 170, align: "justify" });
-
-    // Guarda el documento PDF generado
     doc.save("historia_clinica.pdf");
 
   }
@@ -166,7 +194,7 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
     });
   }
 
-  editarHistoriaClinica(historiaClinica: any){
+  editarHistoriaClinica(historiaClinica: any) {
     localStorage.setItem('editarHistoria', JSON.stringify(historiaClinica));
   }
 
