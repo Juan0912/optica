@@ -159,7 +159,7 @@ export class IndexHistoriaClinicaComponent implements OnInit, OnDestroy {
 
     doc.setFontSize(10);
     doc.setFont("helvetica", "bold");
-    doc.rect(14, 80, 182, 35, "S");
+    doc.rect(14, 80, 182, 50, "S");
     doc.text("DIAGNOSTICO FINAL", 90, 85);
     doc.text("_____________________________________________________________________________________________", 14,87);
     doc.setFontSize(8);
